@@ -3,6 +3,8 @@ name: validate configs
 on:
   push:
   pull_request:
+  # So a run can be started by hand after webmapx changes, without an empty commit.
+  workflow_dispatch:
   # Weekly, because these configs can also break without anyone touching them:
   # webmapx's main branch moves underneath them.
   schedule:
