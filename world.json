@@ -306,7 +306,7 @@
         "id": "osmbright",
         "title": "Helder (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/osmbright.json",
+        "url": "styles/openmaptiles/osmbright.json",
         "metadata": {
           "swatch": "#f8f4f0",
           "reference": true,

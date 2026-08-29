@@ -49,12 +49,12 @@
         "service": "xyz",
         "url": "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         "tileSize": 256,
-        "attribution": "© Google Satellite"
+        "attribution": "\u00a9 Google Satellite"
       },
       {
         "id": "world-countries-source",
         "type": "geojson",
-        "data": "../data/world-countries-simplified.topojson#world-countries-simplified2",
+        "data": "data/world-countries-simplified.topojson#world-countries-simplified2",
         "attribution": "&copy; Natural Earth"
       },
       {
@@ -907,6 +907,12 @@
         "attribution": "Computed in the browser"
       },
       {
+        "id": "paleo-coastlines-source",
+        "type": "geojson",
+        "data": "internalfunc://paleo-coastlines?data=data/paleo/merdith2021&ma={ma}",
+        "attribution": "Merdith et al. 2021 plate model (CC-BY-4.0), reconstructed in the browser"
+      },
+      {
         "id": "graticule-source",
         "type": "geojson",
         "data": "internalfunc://graticule?spacing=15",
@@ -1120,7 +1126,7 @@
           {
             "name": "pop_dens",
             "translation": "population density",
-            "unit": " inh/km²",
+            "unit": " inh/km\u00b2",
             "valuemap": [
               {
                 "value": 0,
@@ -1130,47 +1136,47 @@
               {
                 "value": 10,
                 "operator": "<",
-                "label": "0 - 10 inh/km²"
+                "label": "0 - 10 inh/km\u00b2"
               },
               {
                 "value": 26,
                 "operator": "<",
-                "label": "10 - 26 inh/km²"
+                "label": "10 - 26 inh/km\u00b2"
               },
               {
                 "value": 48,
                 "operator": "<",
-                "label": "26 - 48 inh/km²"
+                "label": "26 - 48 inh/km\u00b2"
               },
               {
                 "value": 72,
                 "operator": "<",
-                "label": "48 - 72 inh/km²"
+                "label": "48 - 72 inh/km\u00b2"
               },
               {
                 "value": 107,
                 "operator": "<=",
-                "label": "72 - 107 inh/km²"
+                "label": "72 - 107 inh/km\u00b2"
               },
               {
                 "value": 174,
                 "operator": "<",
-                "label": "107 - 174 inh/km²"
+                "label": "107 - 174 inh/km\u00b2"
               },
               {
                 "value": 309,
                 "operator": "<",
-                "label": "174 - 309 inh/km²"
+                "label": "174 - 309 inh/km\u00b2"
               },
               {
                 "value": 759,
                 "operator": "<=",
-                "label": "309 - 759 inh/km²"
+                "label": "309 - 759 inh/km\u00b2"
               },
               {
                 "value": 600104,
                 "operator": "<=",
-                "label": "> 759 inh/km²"
+                "label": "> 759 inh/km\u00b2"
               }
             ]
           }
@@ -1233,7 +1239,7 @@
         "version": 8,
         "title": "World countries",
         "metadata": {
-          "abstract": "<p>Countries distinguish between metropolitan (homeland) and independent and semi-independent portions of sovereign states. If you want to see the dependent overseas regions broken out (like in ISO codes, see France for example), use map units instead.</p><p>Each country is coded with a world region that roughly follows the United Nations setup.</p><p>Countries are coded with standard ISO and FIPS codes. French INSEE codes are also included.</p><p>Includes some thematic data from the United Nations (1), U.S. Central Intelligence Agency, and elsewhere.</p><p><img src=\"https://www.naturalearthdata.com/wp-content/uploads/2009/09/banner_countries.png\" alt=\"World countries banner\"></p><p><strong>Disclaimer</strong></p><p>Natural Earth Vector draws boundaries of countries according to defacto status. We show who actually controls the situation on the ground. Please feel free to mashup our disputed area themes to match your particular political outlook.</p><p>Source: <a href=\"https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/\">Natural Earth – Admin 0 Countries</a></p>"
+          "abstract": "<p>Countries distinguish between metropolitan (homeland) and independent and semi-independent portions of sovereign states. If you want to see the dependent overseas regions broken out (like in ISO codes, see France for example), use map units instead.</p><p>Each country is coded with a world region that roughly follows the United Nations setup.</p><p>Countries are coded with standard ISO and FIPS codes. French INSEE codes are also included.</p><p>Includes some thematic data from the United Nations (1), U.S. Central Intelligence Agency, and elsewhere.</p><p><img src=\"https://www.naturalearthdata.com/wp-content/uploads/2009/09/banner_countries.png\" alt=\"World countries banner\"></p><p><strong>Disclaimer</strong></p><p>Natural Earth Vector draws boundaries of countries according to defacto status. We show who actually controls the situation on the ground. Please feel free to mashup our disputed area themes to match your particular political outlook.</p><p>Source: <a href=\"https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/\">Natural Earth \u2013 Admin 0 Countries</a></p>"
         },
         "layers": [
           {
@@ -1353,7 +1359,12 @@
         "annotation": "https://annotations.allmaps.org/images/d180902cb93d5bf2",
         "title": "NYC 1836 (Allmaps)",
         "metadata": {
-          "bounds": [-74.05716, 40.67406, -73.80487, 40.91636],
+          "bounds": [
+            -74.05716,
+            40.67406,
+            -73.80487,
+            40.91636
+          ],
           "swatch": "#adb1a0"
         }
       },
@@ -1475,42 +1486,42 @@
               {
                 "name": "population_density",
                 "translation": "population density",
-                "unit": " inh/km²",
+                "unit": " inh/km\u00b2",
                 "valuemap": [
                   {
                     "value": 20,
                     "operator": "<",
-                    "label": "0 - 20 inh/km²"
+                    "label": "0 - 20 inh/km\u00b2"
                   },
                   {
                     "value": 40,
                     "operator": "<",
-                    "label": "20 - 40 inh/km²"
+                    "label": "20 - 40 inh/km\u00b2"
                   },
                   {
                     "value": 70,
                     "operator": "<",
-                    "label": "40 - 70 inh/km²"
+                    "label": "40 - 70 inh/km\u00b2"
                   },
                   {
                     "value": 100,
                     "operator": "<",
-                    "label": "70 - 100 inh/km²"
+                    "label": "70 - 100 inh/km\u00b2"
                   },
                   {
                     "value": 150,
                     "operator": "<",
-                    "label": "100 - 150 inh/km²"
+                    "label": "100 - 150 inh/km\u00b2"
                   },
                   {
                     "value": 300,
                     "operator": "<",
-                    "label": "150 - 300 inh/km²"
+                    "label": "150 - 300 inh/km\u00b2"
                   },
                   {
                     "value": 20000,
                     "operator": "<=",
-                    "label": "300 - 20000 inh/km²"
+                    "label": "300 - 20000 inh/km\u00b2"
                   }
                 ]
               },
@@ -2677,20 +2688,59 @@
             "#3949ab",
             "civil",
             "#90caf9",
+            "sunset",
+            "#E9A97A",
             "#cccccc"
           ],
-          "fill-opacity": 0.45,
-          "fill-outline-color": "#000000"
+          "fill-opacity": 1,
+          "fill-outline-color": [
+            "match",
+            [
+              "get",
+              "id"
+            ],
+            "sunset",
+            "#E9A97A",
+            "#000000"
+          ]
         },
         "metadata": {
+          "transparency": 45,
           "title": "Day, twilight and night (computed)",
-          "abstract": "Night and the three twilights, right now. Computed from the date and time rather than fetched, and redrawn continuously as the Earth turns: the whole picture slides west at 464 metres a second on the equator, gliding at street zoom and barely stirring at world zoom. Where the bands lie north to south is a matter of the date — in June the night side does not reach the Arctic at all — and where they lie east to west is a matter of the time. The bands are set by how far the sun is below the horizon. Civil twilight, down to 6 degrees below, is still bright enough to read outdoors and to make out the horizon at sea. Nautical twilight, 6 to 12 degrees, brings out the brighter stars while the horizon can just be seen — the two together are what a sextant needs, and where the name comes from. Astronomical twilight, 12 to 18 degrees, looks dark but still washes out the faintest stars. Below 18 degrees is full night.",
+          "abstract": "Night and the three twilights, right now. Computed from the date and time rather than fetched, and redrawn continuously as the Earth turns: the whole picture slides west at 464 metres a second on the equator, gliding at street zoom and barely stirring at world zoom. Where the bands lie north to south is a matter of the date \u2014 in June the night side does not reach the Arctic at all \u2014 and where they lie east to west is a matter of the time. The bands are set by how far the sun is below the horizon. Civil twilight, down to 6 degrees below, is still bright enough to read outdoors and to make out the horizon at sea. Nautical twilight, 6 to 12 degrees, brings out the brighter stars while the horizon can just be seen \u2014 the two together are what a sextant needs, and where the name comes from. Astronomical twilight, 12 to 18 degrees, looks dark but still washes out the faintest stars. Below 18 degrees is full night.",
           "attributes": {
             "translations": [
               {
                 "name": "description",
                 "translation": "zone",
                 "unit": ""
+              },
+              {
+                "name": "id",
+                "translation": "zone",
+                "unit": "",
+                "valuemap": [
+                  {
+                    "value": "sunset",
+                    "label": "Sunrise and sunset"
+                  },
+                  {
+                    "value": "civil",
+                    "label": "Civil twilight"
+                  },
+                  {
+                    "value": "nautical",
+                    "label": "Nautical twilight"
+                  },
+                  {
+                    "value": "astronomical",
+                    "label": "Astronomical twilight"
+                  },
+                  {
+                    "value": "night",
+                    "label": "Night"
+                  }
+                ]
               }
             ]
           }
@@ -2710,7 +2760,43 @@
         },
         "metadata": {
           "title": "Sun position (computed)",
-          "abstract": "The point the sun is directly overhead, right now, moving west at 464 metres a second as the Earth turns. Computed from the date and time rather than fetched, and redrawn continuously — at street zoom it glides across the screen, at world zoom it barely stirs. How far north or south the sun stands is a matter of the date — that is the seasons. How far east or west is a matter of the time: the Earth turns fifteen degrees an hour, so the sun crosses one degree of longitude every four minutes. But the clock is not quite the sun's: because the Earth's orbit is an ellipse and its axis is tilted, the sun reaches its highest point up to a quarter of an hour before or after twelve o'clock, depending on the month. That is taken into account here. Leaving it out shifts the sun up to four degrees of longitude — a quarter of an hour of turning, which measures about 450 km on the equator and less towards the poles."
+          "abstract": "The point the sun is directly overhead, right now, moving west at 464 metres a second as the Earth turns. Computed from the date and time rather than fetched, and redrawn continuously \u2014 at street zoom it glides across the screen, at world zoom it barely stirs. How far north or south the sun stands is a matter of the date \u2014 that is the seasons. How far east or west is a matter of the time: the Earth turns fifteen degrees an hour, so the sun crosses one degree of longitude every four minutes. But the clock is not quite the sun's: because the Earth's orbit is an ellipse and its axis is tilted, the sun reaches its highest point up to a quarter of an hour before or after twelve o'clock, depending on the month. That is taken into account here. Leaving it out shifts the sun up to four degrees of longitude \u2014 a quarter of an hour of turning, which measures about 450 km on the equator and less towards the poles."
+        }
+      },
+      {
+        "id": "paleo-coastlines",
+        "type": "fill",
+        "title": "Palaeo-coastlines",
+        "source": "paleo-coastlines-source",
+        "paint": {
+          "fill-color": [
+            "match",
+            [
+              "get",
+              "continent"
+            ],
+            "Africa",
+            "#c98a3f",
+            "Asia",
+            "#c2596f",
+            "Europe",
+            "#7a9e5c",
+            "North America",
+            "#4f86a8",
+            "South America",
+            "#b5674c",
+            "Oceania",
+            "#a87bb0",
+            "Antarctica",
+            "#8fa3ad",
+            "#96907f"
+          ],
+          "fill-opacity": 1,
+          "fill-outline-color": "#33302b"
+        },
+        "metadata": {
+          "title": "Palaeo-coastlines",
+          "abstract": "Where the land was, at the age the Deep time tool is set to. Each polygon is coloured by the continent it belongs to *today*, so a single mass splitting into Africa and South America is legible as exactly that. Not a stack of stored maps: the coastlines are held once, at present day, together with the rotation carrying each tectonic plate back through time, and the position at any age is worked out in the browser \u2014 which is why the slider is continuous rather than stepped, and why the whole billion-year model is about three megabytes instead of three hundred. Land that had not formed yet is absent rather than adrift: the Galapagos are four million years old and simply do not appear before that. Coastlines are meaningful for roughly the last 400 million years; the plate motions themselves go back a billion."
         }
       },
       {
@@ -2719,22 +2805,22 @@
         "title": "Graticule",
         "source": "graticule-source",
         "paint": {
-            "line-color": "#6b7785",
-            "line-width": [
-                      "case",
-                      [
-                                "==",
-                                [
-                                          "get",
-                                          "degrees"
-                                ],
-                                0
-                      ],
-                      1.4,
-                      0.5
+          "line-color": "#6b7785",
+          "line-width": [
+            "case",
+            [
+              "==",
+              [
+                "get",
+                "degrees"
+              ],
+              0
             ],
-            "line-opacity": 0.7
-  },
+            1.4,
+            0.5
+          ],
+          "line-opacity": 0.7
+        },
         "metadata": {
           "title": "Graticule",
           "abstract": "Meridians and parallels, sampled so they curve as the projection curves rather than cutting corners."
@@ -2746,29 +2832,29 @@
         "title": "Equator, tropics and polar circles",
         "source": "reference-circles-source",
         "paint": {
-            "line-color": [
-                      "match",
-                      [
-                                "get",
-                                "id"
-                      ],
-                      "equator",
-                      "#d62728",
-                      "cancer",
-                      "#ff7f0e",
-                      "capricorn",
-                      "#ff7f0e",
-                      "#1f77b4"
+          "line-color": [
+            "match",
+            [
+              "get",
+              "id"
             ],
-            "line-width": 1.6,
-            "line-dasharray": [
-                      3,
-                      2
-            ]
-  },
+            "equator",
+            "#d62728",
+            "cancer",
+            "#ff7f0e",
+            "capricorn",
+            "#ff7f0e",
+            "#1f77b4"
+          ],
+          "line-width": 1.6,
+          "line-dasharray": [
+            3,
+            2
+          ]
+        },
         "metadata": {
           "title": "Equator, tropics and polar circles",
-          "abstract": "Computed from the tilt of the Earth on this date. The tilt drifts, so the tropics and polar circles move about ten metres a year — an atlas from 1926 has them half a kilometre out."
+          "abstract": "Computed from the tilt of the Earth on this date. The tilt drifts, so the tropics and polar circles move about ten metres a year \u2014 an atlas from 1926 has them half a kilometre out."
         }
       },
       {
@@ -2777,10 +2863,10 @@
         "title": "Tissot indicatrix",
         "source": "tissot-source",
         "paint": {
-            "fill-color": "#e377c2",
-            "fill-opacity": 0.35,
-            "fill-outline-color": "#7b3f6b"
-  },
+          "fill-color": "#e377c2",
+          "fill-opacity": 0.35,
+          "fill-outline-color": "#7b3f6b"
+        },
         "metadata": {
           "title": "Tissot indicatrix",
           "abstract": "Circles of 500 km ground radius. Whatever the projection does to them is what it does to every shape and area on the map: on Mercator they swell towards the poles, on an equal-area map they squash but keep their size."
@@ -2792,33 +2878,40 @@
         "title": "Hours of daylight",
         "source": "day-length-source",
         "paint": {
-            "line-color": [
-                      "interpolate",
-                      [
-                                "linear"
-                      ],
-                      [
-                                "get",
-                                "hours"
-                      ],
-                      0,
-                      "#08306b",
-                      12,
-                      "#6a51a3",
-                      24,
-                      "#d94801"
+          "line-color": [
+            "interpolate",
+            [
+              "linear"
             ],
-            "line-width": [
-                      "case",
-                      ["==", ["get", "hours"], 12],
-                      2,
-                      1.2
+            [
+              "get",
+              "hours"
             ],
-            "line-opacity": 0.9
-  },
+            0,
+            "#08306b",
+            12,
+            "#6a51a3",
+            24,
+            "#d94801"
+          ],
+          "line-width": [
+            "case",
+            [
+              "==",
+              [
+                "get",
+                "hours"
+              ],
+              12
+            ],
+            2,
+            1.2
+          ],
+          "line-opacity": 0.9
+        },
         "metadata": {
           "title": "Hours of daylight",
-          "abstract": "Latitudes that get 0, 2, 4 … 24 hours of daylight today. The 0 and 24 hour lines exist only when there is polar night or midnight sun somewhere."
+          "abstract": "Latitudes that get 0, 2, 4 \u2026 24 hours of daylight today. The 0 and 24 hour lines exist only when there is polar night or midnight sun somewhere."
         }
       },
       {
@@ -2827,26 +2920,26 @@
         "title": "Solar time",
         "source": "solar-time-source",
         "paint": {
-            "line-color": [
-                      "case",
-                      [
-                                "get",
-                                "noon"
-                      ],
-                      "#d95f02",
-                      "#7570b3"
+          "line-color": [
+            "case",
+            [
+              "get",
+              "noon"
             ],
-            "line-width": [
-                      "case",
-                      [
-                                "get",
-                                "noon"
-                      ],
-                      2,
-                      0.8
+            "#d95f02",
+            "#7570b3"
+          ],
+          "line-width": [
+            "case",
+            [
+              "get",
+              "noon"
             ],
-            "line-opacity": 0.8
-  },
+            2,
+            0.8
+          ],
+          "line-opacity": 0.8
+        },
         "metadata": {
           "title": "Solar time",
           "abstract": "Where it is solar noon, and every hour of solar time either side. The gap against the clock is why the sun is overhead at half past one in western Spain."
@@ -2854,16 +2947,48 @@
       },
       {
         "id": "analemma",
-        "type": "line",
+        "type": "style",
+        "version": 8,
         "title": "Analemma",
-        "source": "analemma-source",
-        "paint": {
-            "line-color": "#b8860b",
-            "line-width": 2
-  },
+        "layers": [
+          {
+            "id": "analemma-curve",
+            "type": "line",
+            "source": "analemma-source",
+            "filter": [
+              "==",
+              [
+                "geometry-type"
+              ],
+              "LineString"
+            ],
+            "paint": {
+              "line-color": "#b8860b",
+              "line-width": 2
+            }
+          },
+          {
+            "id": "analemma-today",
+            "type": "circle",
+            "source": "analemma-source",
+            "filter": [
+              "==",
+              [
+                "geometry-type"
+              ],
+              "Point"
+            ],
+            "paint": {
+              "circle-radius": 5,
+              "circle-color": "#ffe14d",
+              "circle-stroke-color": "#8a6d00",
+              "circle-stroke-width": 1.5
+            }
+          }
+        ],
         "metadata": {
           "title": "Analemma",
-          "abstract": "Where the sun stands at 12:00 UTC on every day of the year: the figure of eight made by the tilt of the axis and the eccentricity of the orbit."
+          "abstract": "Where the sun stands at 12:00 UTC on every day of the year: the figure of eight made by the tilt of the axis and the eccentricity of the orbit. Each day is its own segment, and the yellow dot is today."
         }
       },
       {
@@ -2872,10 +2997,10 @@
         "title": "Moon above the horizon",
         "source": "moon-visibility-source",
         "paint": {
-            "fill-color": "#c7c9d9",
-            "fill-opacity": 0.25,
-            "fill-outline-color": "#8c8fa8"
-  },
+          "fill-color": "#c7c9d9",
+          "fill-opacity": 0.25,
+          "fill-outline-color": "#8c8fa8"
+        },
         "metadata": {
           "title": "Moon above the horizon",
           "abstract": "The half of the Earth the moon is above the horizon for. Where this overlaps the night side is where it can actually be seen."
@@ -2887,11 +3012,11 @@
         "title": "Moon position",
         "source": "moon-position-source",
         "paint": {
-            "circle-color": "#e8e8ef",
-            "circle-radius": 9,
-            "circle-stroke-color": "#5a5f7a",
-            "circle-stroke-width": 2
-  },
+          "circle-color": "#e8e8ef",
+          "circle-radius": 9,
+          "circle-stroke-color": "#5a5f7a",
+          "circle-stroke-width": 2
+        },
         "metadata": {
           "title": "Moon position",
           "abstract": "The point the moon stands over, with its phase, illumination and distance. It shifts about twelve degrees east a day, which is why moonrise is fifty minutes later each night."
@@ -2903,37 +3028,37 @@
         "title": "UTM grid zones",
         "source": "utm-zones-source",
         "paint": {
-            "line-color": [
-                      "case",
-                      [
-                                "!=",
-                                [
-                                          "get",
-                                          "exception"
-                                ],
-                                null
-                      ],
-                      "#d62728",
-                      "#4a90d9"
+          "line-color": [
+            "case",
+            [
+              "!=",
+              [
+                "get",
+                "exception"
+              ],
+              null
             ],
-            "line-width": [
-                      "case",
-                      [
-                                "!=",
-                                [
-                                          "get",
-                                          "exception"
-                                ],
-                                null
-                      ],
-                      1.6,
-                      0.6
+            "#d62728",
+            "#4a90d9"
+          ],
+          "line-width": [
+            "case",
+            [
+              "!=",
+              [
+                "get",
+                "exception"
+              ],
+              null
             ],
-            "line-opacity": 0.8
-  },
+            1.6,
+            0.6
+          ],
+          "line-opacity": 0.8
+        },
         "metadata": {
           "title": "UTM grid zones",
-          "abstract": "The sixty zones and twenty bands, from the rules — including the hand-made exceptions: 32V widened for Norway, three zones missing over Svalbard, and row X twelve degrees tall. The exceptions are drawn in red."
+          "abstract": "The sixty zones and twenty bands, from the rules \u2014 including the hand-made exceptions: 32V widened for Norway, three zones missing over Svalbard, and row X twelve degrees tall. The exceptions are drawn in red."
         }
       },
       {
@@ -2944,8 +3069,13 @@
         "paint": {
           "line-color": [
             "interpolate",
-            ["linear"],
-            ["get", "declination"],
+            [
+              "linear"
+            ],
+            [
+              "get",
+              "declination"
+            ],
             -23.5,
             "#2166ac",
             0,
@@ -2955,7 +3085,14 @@
           ],
           "line-width": [
             "case",
-            ["!=", ["get", "solstice"], null],
+            [
+              "!=",
+              [
+                "get",
+                "solstice"
+              ],
+              null
+            ],
             2.2,
             0.7
           ],
@@ -2963,7 +3100,7 @@
         },
         "metadata": {
           "title": "Sun paths | solstice to solstice",
-          "abstract": "The track the overhead sun takes each day, one line per day from the June solstice on the Tropic of Cancer to the December solstice on the Tropic of Capricorn. The return half of the year retraces the same latitudes, so it is not drawn. The lines crowd at the solstices, where the sun turns, and spread at the equinox, where it crosses the equator fastest — the spacing is the seasons.",
+          "abstract": "The track the overhead sun takes each day, one line per day from the June solstice on the Tropic of Cancer to the December solstice on the Tropic of Capricorn. The return half of the year retraces the same latitudes, so it is not drawn. The lines crowd at the solstices, where the sun turns, and spread at the equinox, where it crosses the equator fastest \u2014 the spacing is the seasons.",
           "attributes": {
             "translations": [
               {
@@ -2974,7 +3111,7 @@
               {
                 "name": "declination",
                 "translation": "declination",
-                "unit": "°"
+                "unit": "\u00b0"
               }
             ]
           }
@@ -3015,6 +3152,11 @@
       "enabled": true,
       "provider": "nominatim",
       "attribution": "&copy; OpenStreetMap contributors | &copy; Nominatim"
+    },
+    "paleotime": {
+      "enabled": true,
+      "data": "data/paleo/merdith2021",
+      "to": 1000
     },
     "mainToolbar": {
       "type": "toolbar",
@@ -3118,6 +3260,9 @@
                 {
                   "label": "Geography",
                   "children": [
+                    {
+                      "layerId": "paleo-coastlines"
+                    },
                     {
                       "layerId": "daynight-computed"
                     },
@@ -3300,6 +3445,38 @@
           ]
         },
         {
+          "id": "timeSlider",
+          "type": "timeSlider",
+          "enabled": true,
+          "title": "Time",
+          "icon": "clock",
+          "keywords": [
+            "time",
+            "date",
+            "clock",
+            "sun",
+            "moon",
+            "season",
+            "daylight"
+          ]
+        },
+        {
+          "id": "paleotime",
+          "type": "paleotime",
+          "enabled": true,
+          "title": "Deep time",
+          "keywords": [
+            "plate",
+            "tectonics",
+            "continent",
+            "pangaea",
+            "geology",
+            "palaeo",
+            "coastline",
+            "drift"
+          ]
+        },
+        {
           "type": "spacer",
           "enabled": true
         },
@@ -3400,7 +3577,10 @@
                     "osm"
                   ],
                   "view": {
-                    "center": [-74.0, 40.7],
+                    "center": [
+                      -74.0,
+                      40.7
+                    ],
                     "zoom": 4
                   }
                 }
@@ -3414,7 +3594,10 @@
                     "world-countries"
                   ],
                   "view": {
-                    "center": [10, 50],
+                    "center": [
+                      10,
+                      50
+                    ],
                     "zoom": 4
                   },
                   "projection": "globe"
@@ -3439,7 +3622,10 @@
                     "world-countries"
                   ],
                   "view": {
-                    "center": [4.9041, 52.3676],
+                    "center": [
+                      4.9041,
+                      52.3676
+                    ],
                     "zoom": 10
                   }
                 }
@@ -3453,7 +3639,10 @@
                     "amsterdam-historical"
                   ],
                   "view": {
-                    "center": [4.9083, 52.3749],
+                    "center": [
+                      4.9083,
+                      52.3749
+                    ],
                     "zoom": 13.6
                   }
                 }

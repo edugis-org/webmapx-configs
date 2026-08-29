@@ -8775,7 +8775,7 @@
         "id": "osmbright",
         "title": "Helder (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/osmbright.json",
+        "url": "styles/openmaptiles/osmbright.json",
         "metadata": {
           "reference": true,
           "title": "Helder (OSM)",

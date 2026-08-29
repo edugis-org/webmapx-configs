@@ -15,28 +15,36 @@ CI rather than with a convention: **how do configs and code stay in sync?**
 ## Layout
 
 ```
-configs/          one config per map; this is what a deployment serves
-  demo.json
-  world.json
-  deeptime.json
-  data/           datasets a config's tools read (paleo plate model, …)
-  stories-demo/   assets a config points at, beside the config that uses one
-styles/           MapLibre style documents the configs reference
+demo.json world.json nl.json deeptime.json …   one config per map, at the root
+data/      datasets the configs read (plate model, world countries)
+styles/    MapLibre style documents the configs reference
+stories-demo/  html a story step points at
+apikeys.example.json  template; copy to apikeys.json (gitignored) per deployment
 ```
 
-**A tool's data is a config asset.** The 4.4 MB plate model behind the deep-time
-map belongs to the map being described, not to webmapx, so it lives under
-`configs/` and is served with the configs. A config names it as
-`data/paleo/merdith2021`, relative to itself — and webmapx resolves it against
-the config's own URL, so it is found whether the config is served from a
-subdirectory, a CDN, or edited in `setup.html` and previewed from
-`localStorage`.
+Flat on purpose: webmapx serves this repository *as* its `public/config`, so
+`demo.json` sits where the app expects `config/demo.json`, and every path inside
+a config — `data/paleo/merdith2021`, `styles/openmaptiles/osmbright.json` — is
+relative to the config file itself. Nothing has to be copied or rewritten to go
+from editing to serving.
 
-Paths inside a config are **relative to the config file**, never absolute and
-never rooted at `/`: a config must work from any subdirectory of any host. That
-is why `configs/world.json` says `../styles/openmaptiles/osmbright.json`, and
-why the whole repository can be served from a subdirectory, a CDN, or GitHub's
-raw endpoint without editing a line.
+**A tool's data is a config asset.** The 4.4 MB plate model behind the deep-time
+map belongs to the map being described, not to webmapx, so it lives here under
+`data/` and is served with the configs. webmapx resolves such a path against the
+config's own URL, so it is found from a subdirectory, a CDN, or a config edited
+in `setup.html` and previewed out of `localStorage`.
+
+## Working on a config
+
+From a webmapx checkout, `npm run configs` puts this repository at
+`public/config` — a symlink to your sibling clone if you have one, so editing a
+config in `testpages/setup.html` edits the real thing and you commit it here.
+
+A deployment does not follow this repository's main branch. It records the
+commit it was built and tested against in webmapx's `configs.lock`
+(`npm run configs:pin`), and `npm run configs:sync` checks out exactly that —
+so a site that was tested and working cannot change because this repository
+moved. Updating a deployment's configs is a deliberate commit to that file.
 
 ## Using a config
 

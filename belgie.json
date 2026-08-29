@@ -1446,7 +1446,7 @@
         "id": "osmbright",
         "title": "Helder (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/osmbright.json",
+        "url": "styles/openmaptiles/osmbright.json",
         "metadata": {
           "reference": true,
           "title": "Helder (OSM)",
@@ -1472,7 +1472,7 @@
         "id": "darkmatter",
         "title": "Donker (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/dark-matter.json",
+        "url": "styles/openmaptiles/dark-matter.json",
         "metadata": {
           "reference": true,
           "title": "Donker (OSM)",
@@ -1485,7 +1485,7 @@
         "id": "klokantechbasic",
         "title": "Eenvoudig (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/klokantech-basic.json",
+        "url": "styles/openmaptiles/klokantech-basic.json",
         "metadata": {
           "reference": true,
           "title": "Eenvoudig (OSM)",
@@ -1498,7 +1498,7 @@
         "id": "positron",
         "title": "Eenvoudig grijs (OSM)",
         "type": "style",
-        "url": "../styles/openmaptiles/positron.json",
+        "url": "styles/openmaptiles/positron.json",
         "metadata": {
           "reference": true,
           "title": "Eenvoudig grijs (OSM)",

@@ -16,7 +16,7 @@ import process from 'node:process';
 import { existsSync } from 'node:fs';
 
 const repoRoot = path.dirname(new URL(import.meta.url).pathname);
-const configsDir = path.resolve(repoRoot, '..', 'configs');
+const configsDir = path.resolve(repoRoot, '..');
 
 // `||`, not `??`: the workflow sets this to an empty string for the matrix
 // entries that install from npm, and an empty path is "unset", not a location.
@@ -31,8 +31,12 @@ if (!existsSync(validator)) {
 }
 
 const entries = await readdir(configsDir, { withFileTypes: true });
+// The repository is flat so that it can be served as-is at public/config —
+// which means package.json and the apikeys template sit beside the configs.
+const NOT_A_CONFIG = new Set(['package.json', 'package-lock.json', 'apikeys.json', 'apikeys.example.json', 'configs.lock']);
+
 const configs = entries
-  .filter((entry) => entry.isFile() && entry.name.endsWith('.json'))
+  .filter((entry) => entry.isFile() && entry.name.endsWith('.json') && !NOT_A_CONFIG.has(entry.name))
   .map((entry) => path.join(configsDir, entry.name))
   .sort();
 
