@@ -18,8 +18,10 @@ import { existsSync } from 'node:fs';
 const repoRoot = path.dirname(new URL(import.meta.url).pathname);
 const configsDir = path.resolve(repoRoot, '..', 'configs');
 
+// `||`, not `??`: the workflow sets this to an empty string for the matrix
+// entries that install from npm, and an empty path is "unset", not a location.
 const validator = process.env.WEBMAPX_VALIDATE
-  ?? path.resolve(repoRoot, '..', 'node_modules', '@edugis-org', 'webmapx', 'dist-lib', 'webmapx-validate.js');
+  || path.resolve(repoRoot, '..', 'node_modules', '@edugis-org', 'webmapx', 'dist-lib', 'webmapx-validate.js');
 
 if (!existsSync(validator)) {
   console.error(`Validator not found at ${validator}.`);

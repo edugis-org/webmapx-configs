@@ -20,38 +20,39 @@ jobs:
     # run ahead of the code. Validated against one version, both look the same
     # — which is to say they look like nothing, since webmapx skips what it
     # does not recognise and carries on.
+    # Two sources, deliberately, because they answer different questions and
+    # neither replaces the other. A released version comes from npm: it is the
+    # artifact deployments actually install, and it cannot be rewritten. `main`
+    # comes from a git checkout, because "what is coming" is never published —
+    # publishing per push would be absurd, and `ref` also takes any commit sha.
     strategy:
       fail-fast: false
       matrix:
         include:
           - name: main
             ref: main
-          # Add a released tag here as soon as one ships webmapx-validate; npm's
-          # 0.2.2 predates the CLI, so there is nothing older to pin yet.
-          # - name: v0.2.3
-          #   ref: v0.2.3
+          - name: '0.2.3'
+            npm: '0.2.3'
 
     name: webmapx@${{ matrix.name }}
 
     steps:
       - uses: actions/checkout@v4
 
-      # webmapx is built from source rather than installed from npm because the
-      # validator CLI is not in a published release yet. Swap this for a plain
-      # `npm install @edugis-org/webmapx@<version>` once one ships it — the
-      # validate script takes the built CLI's path either way.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Check out webmapx (${{ matrix.ref }})
+        if: matrix.ref
         uses: actions/checkout@v4
         with:
           repository: edugis-org/webmapx
           ref: ${{ matrix.ref }}
           path: webmapx-checkout
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Build the validator
+      - name: Build the validator from source
+        if: matrix.ref
         working-directory: webmapx-checkout
         # The postinstall downloads a browser for webmapx's own UI tests, which
         # this job has no use for.
@@ -61,7 +62,13 @@ jobs:
           npm ci --ignore-scripts
           npm run build:lib
 
+      - name: Install webmapx ${{ matrix.npm }} from npm
+        if: matrix.npm
+        # --ignore-scripts for the same reason, and the published package
+        # already contains the built dist-lib.
+        run: npm install --no-save --ignore-scripts "@edugis-org/webmapx@${{ matrix.npm }}"
+
       - name: Validate every config
         env:
-          WEBMAPX_VALIDATE: ${{ github.workspace }}/webmapx-checkout/dist-lib/webmapx-validate.js
+          WEBMAPX_VALIDATE: ${{ matrix.ref && format('{0}/webmapx-checkout/dist-lib/webmapx-validate.js', github.workspace) || '' }}
         run: npm run validate

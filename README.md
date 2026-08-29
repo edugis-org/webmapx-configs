@@ -18,10 +18,19 @@ CI rather than with a convention: **how do configs and code stay in sync?**
 configs/          one config per map; this is what a deployment serves
   demo.json
   world.json
-  nl.json
+  deeptime.json
+  data/           datasets a config's tools read (paleo plate model, …)
   stories-demo/   assets a config points at, beside the config that uses one
 styles/           MapLibre style documents the configs reference
 ```
+
+**A tool's data is a config asset.** The 4.4 MB plate model behind the deep-time
+map belongs to the map being described, not to webmapx, so it lives under
+`configs/` and is served with the configs. A config names it as
+`data/paleo/merdith2021`, relative to itself — and webmapx resolves it against
+the config's own URL, so it is found whether the config is served from a
+subdirectory, a CDN, or edited in `setup.html` and previewed from
+`localStorage`.
 
 Paths inside a config are **relative to the config file**, never absolute and
 never rooted at `/`: a config must work from any subdirectory of any host. That
