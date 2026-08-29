@@ -14,7 +14,8 @@
     ],
     "zoom": 1,
     "type": "maplibre",
-    "projection": "globe"
+    "projection": "globe",
+    "backgroundColor": "#0b3d66"
   },
   "layerData": {
     "sources": [
@@ -76,7 +77,8 @@
     "paleotime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
-      "to": 1000
+      "to": 1000,
+      "scenes": "data/paleo"
     },
     "layerOverview": {
       "type": "layerOverview",
