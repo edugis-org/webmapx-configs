@@ -49,7 +49,7 @@
         "service": "xyz",
         "url": "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         "tileSize": 256,
-        "attribution": "\u00a9 Google Satellite"
+        "attribution": "© Google Satellite"
       },
       {
         "id": "world-countries-source",
@@ -1126,7 +1126,7 @@
           {
             "name": "pop_dens",
             "translation": "population density",
-            "unit": " inh/km\u00b2",
+            "unit": " inh/km²",
             "valuemap": [
               {
                 "value": 0,
@@ -1136,47 +1136,47 @@
               {
                 "value": 10,
                 "operator": "<",
-                "label": "0 - 10 inh/km\u00b2"
+                "label": "0 - 10 inh/km²"
               },
               {
                 "value": 26,
                 "operator": "<",
-                "label": "10 - 26 inh/km\u00b2"
+                "label": "10 - 26 inh/km²"
               },
               {
                 "value": 48,
                 "operator": "<",
-                "label": "26 - 48 inh/km\u00b2"
+                "label": "26 - 48 inh/km²"
               },
               {
                 "value": 72,
                 "operator": "<",
-                "label": "48 - 72 inh/km\u00b2"
+                "label": "48 - 72 inh/km²"
               },
               {
                 "value": 107,
                 "operator": "<=",
-                "label": "72 - 107 inh/km\u00b2"
+                "label": "72 - 107 inh/km²"
               },
               {
                 "value": 174,
                 "operator": "<",
-                "label": "107 - 174 inh/km\u00b2"
+                "label": "107 - 174 inh/km²"
               },
               {
                 "value": 309,
                 "operator": "<",
-                "label": "174 - 309 inh/km\u00b2"
+                "label": "174 - 309 inh/km²"
               },
               {
                 "value": 759,
                 "operator": "<=",
-                "label": "309 - 759 inh/km\u00b2"
+                "label": "309 - 759 inh/km²"
               },
               {
                 "value": 600104,
                 "operator": "<=",
-                "label": "> 759 inh/km\u00b2"
+                "label": "> 759 inh/km²"
               }
             ]
           }
@@ -1239,7 +1239,7 @@
         "version": 8,
         "title": "World countries",
         "metadata": {
-          "abstract": "<p>Countries distinguish between metropolitan (homeland) and independent and semi-independent portions of sovereign states. If you want to see the dependent overseas regions broken out (like in ISO codes, see France for example), use map units instead.</p><p>Each country is coded with a world region that roughly follows the United Nations setup.</p><p>Countries are coded with standard ISO and FIPS codes. French INSEE codes are also included.</p><p>Includes some thematic data from the United Nations (1), U.S. Central Intelligence Agency, and elsewhere.</p><p><img src=\"https://www.naturalearthdata.com/wp-content/uploads/2009/09/banner_countries.png\" alt=\"World countries banner\"></p><p><strong>Disclaimer</strong></p><p>Natural Earth Vector draws boundaries of countries according to defacto status. We show who actually controls the situation on the ground. Please feel free to mashup our disputed area themes to match your particular political outlook.</p><p>Source: <a href=\"https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/\">Natural Earth \u2013 Admin 0 Countries</a></p>"
+          "abstract": "<p>Countries distinguish between metropolitan (homeland) and independent and semi-independent portions of sovereign states. If you want to see the dependent overseas regions broken out (like in ISO codes, see France for example), use map units instead.</p><p>Each country is coded with a world region that roughly follows the United Nations setup.</p><p>Countries are coded with standard ISO and FIPS codes. French INSEE codes are also included.</p><p>Includes some thematic data from the United Nations (1), U.S. Central Intelligence Agency, and elsewhere.</p><p><img src=\"https://www.naturalearthdata.com/wp-content/uploads/2009/09/banner_countries.png\" alt=\"World countries banner\"></p><p><strong>Disclaimer</strong></p><p>Natural Earth Vector draws boundaries of countries according to defacto status. We show who actually controls the situation on the ground. Please feel free to mashup our disputed area themes to match your particular political outlook.</p><p>Source: <a href=\"https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/\">Natural Earth – Admin 0 Countries</a></p>"
         },
         "layers": [
           {
@@ -1486,42 +1486,42 @@
               {
                 "name": "population_density",
                 "translation": "population density",
-                "unit": " inh/km\u00b2",
+                "unit": " inh/km²",
                 "valuemap": [
                   {
                     "value": 20,
                     "operator": "<",
-                    "label": "0 - 20 inh/km\u00b2"
+                    "label": "0 - 20 inh/km²"
                   },
                   {
                     "value": 40,
                     "operator": "<",
-                    "label": "20 - 40 inh/km\u00b2"
+                    "label": "20 - 40 inh/km²"
                   },
                   {
                     "value": 70,
                     "operator": "<",
-                    "label": "40 - 70 inh/km\u00b2"
+                    "label": "40 - 70 inh/km²"
                   },
                   {
                     "value": 100,
                     "operator": "<",
-                    "label": "70 - 100 inh/km\u00b2"
+                    "label": "70 - 100 inh/km²"
                   },
                   {
                     "value": 150,
                     "operator": "<",
-                    "label": "100 - 150 inh/km\u00b2"
+                    "label": "100 - 150 inh/km²"
                   },
                   {
                     "value": 300,
                     "operator": "<",
-                    "label": "150 - 300 inh/km\u00b2"
+                    "label": "150 - 300 inh/km²"
                   },
                   {
                     "value": 20000,
                     "operator": "<=",
-                    "label": "300 - 20000 inh/km\u00b2"
+                    "label": "300 - 20000 inh/km²"
                   }
                 ]
               },
@@ -2707,7 +2707,7 @@
         "metadata": {
           "transparency": 45,
           "title": "Day, twilight and night (computed)",
-          "abstract": "Night and the three twilights, right now. Computed from the date and time rather than fetched, and redrawn continuously as the Earth turns: the whole picture slides west at 464 metres a second on the equator, gliding at street zoom and barely stirring at world zoom. Where the bands lie north to south is a matter of the date \u2014 in June the night side does not reach the Arctic at all \u2014 and where they lie east to west is a matter of the time. The bands are set by how far the sun is below the horizon. Civil twilight, down to 6 degrees below, is still bright enough to read outdoors and to make out the horizon at sea. Nautical twilight, 6 to 12 degrees, brings out the brighter stars while the horizon can just be seen \u2014 the two together are what a sextant needs, and where the name comes from. Astronomical twilight, 12 to 18 degrees, looks dark but still washes out the faintest stars. Below 18 degrees is full night.",
+          "abstract": "Night and the three twilights, right now. Computed from the date and time rather than fetched, and redrawn continuously as the Earth turns: the whole picture slides west at 464 metres a second on the equator, gliding at street zoom and barely stirring at world zoom. Where the bands lie north to south is a matter of the date — in June the night side does not reach the Arctic at all — and where they lie east to west is a matter of the time. The bands are set by how far the sun is below the horizon. Civil twilight, down to 6 degrees below, is still bright enough to read outdoors and to make out the horizon at sea. Nautical twilight, 6 to 12 degrees, brings out the brighter stars while the horizon can just be seen — the two together are what a sextant needs, and where the name comes from. Astronomical twilight, 12 to 18 degrees, looks dark but still washes out the faintest stars. Below 18 degrees is full night.",
           "attributes": {
             "translations": [
               {
@@ -2760,7 +2760,7 @@
         },
         "metadata": {
           "title": "Sun position (computed)",
-          "abstract": "The point the sun is directly overhead, right now, moving west at 464 metres a second as the Earth turns. Computed from the date and time rather than fetched, and redrawn continuously \u2014 at street zoom it glides across the screen, at world zoom it barely stirs. How far north or south the sun stands is a matter of the date \u2014 that is the seasons. How far east or west is a matter of the time: the Earth turns fifteen degrees an hour, so the sun crosses one degree of longitude every four minutes. But the clock is not quite the sun's: because the Earth's orbit is an ellipse and its axis is tilted, the sun reaches its highest point up to a quarter of an hour before or after twelve o'clock, depending on the month. That is taken into account here. Leaving it out shifts the sun up to four degrees of longitude \u2014 a quarter of an hour of turning, which measures about 450 km on the equator and less towards the poles."
+          "abstract": "The point the sun is directly overhead, right now, moving west at 464 metres a second as the Earth turns. Computed from the date and time rather than fetched, and redrawn continuously — at street zoom it glides across the screen, at world zoom it barely stirs. How far north or south the sun stands is a matter of the date — that is the seasons. How far east or west is a matter of the time: the Earth turns fifteen degrees an hour, so the sun crosses one degree of longitude every four minutes. But the clock is not quite the sun's: because the Earth's orbit is an ellipse and its axis is tilted, the sun reaches its highest point up to a quarter of an hour before or after twelve o'clock, depending on the month. That is taken into account here. Leaving it out shifts the sun up to four degrees of longitude — a quarter of an hour of turning, which measures about 450 km on the equator and less towards the poles."
         }
       },
       {
@@ -2796,7 +2796,7 @@
         },
         "metadata": {
           "title": "Palaeo-coastlines",
-          "abstract": "Where the land was, at the age the Deep time tool is set to. Each polygon is coloured by the continent it belongs to *today*, so a single mass splitting into Africa and South America is legible as exactly that. Not a stack of stored maps: the coastlines are held once, at present day, together with the rotation carrying each tectonic plate back through time, and the position at any age is worked out in the browser \u2014 which is why the slider is continuous rather than stepped, and why the whole billion-year model is about three megabytes instead of three hundred. Land that had not formed yet is absent rather than adrift: the Galapagos are four million years old and simply do not appear before that. Coastlines are meaningful for roughly the last 400 million years; the plate motions themselves go back a billion."
+          "abstract": "Where the land was, at the age the Deep time tool is set to. Each polygon is coloured by the continent it belongs to *today*, so a single mass splitting into Africa and South America is legible as exactly that. Not a stack of stored maps: the coastlines are held once, at present day, together with the rotation carrying each tectonic plate back through time, and the position at any age is worked out in the browser — which is why the slider is continuous rather than stepped, and why the whole billion-year model is about three megabytes instead of three hundred. Land that had not formed yet is absent rather than adrift: the Galapagos are four million years old and simply do not appear before that. Coastlines are meaningful for roughly the last 400 million years; the plate motions themselves go back a billion."
         }
       },
       {
@@ -2854,7 +2854,7 @@
         },
         "metadata": {
           "title": "Equator, tropics and polar circles",
-          "abstract": "Computed from the tilt of the Earth on this date. The tilt drifts, so the tropics and polar circles move about ten metres a year \u2014 an atlas from 1926 has them half a kilometre out."
+          "abstract": "Computed from the tilt of the Earth on this date. The tilt drifts, so the tropics and polar circles move about ten metres a year — an atlas from 1926 has them half a kilometre out."
         }
       },
       {
@@ -2911,7 +2911,7 @@
         },
         "metadata": {
           "title": "Hours of daylight",
-          "abstract": "Latitudes that get 0, 2, 4 \u2026 24 hours of daylight today. The 0 and 24 hour lines exist only when there is polar night or midnight sun somewhere."
+          "abstract": "Latitudes that get 0, 2, 4 … 24 hours of daylight today. The 0 and 24 hour lines exist only when there is polar night or midnight sun somewhere."
         }
       },
       {
@@ -3058,7 +3058,7 @@
         },
         "metadata": {
           "title": "UTM grid zones",
-          "abstract": "The sixty zones and twenty bands, from the rules \u2014 including the hand-made exceptions: 32V widened for Norway, three zones missing over Svalbard, and row X twelve degrees tall. The exceptions are drawn in red."
+          "abstract": "The sixty zones and twenty bands, from the rules — including the hand-made exceptions: 32V widened for Norway, three zones missing over Svalbard, and row X twelve degrees tall. The exceptions are drawn in red."
         }
       },
       {
@@ -3100,7 +3100,7 @@
         },
         "metadata": {
           "title": "Sun paths | solstice to solstice",
-          "abstract": "The track the overhead sun takes each day, one line per day from the June solstice on the Tropic of Cancer to the December solstice on the Tropic of Capricorn. The return half of the year retraces the same latitudes, so it is not drawn. The lines crowd at the solstices, where the sun turns, and spread at the equinox, where it crosses the equator fastest \u2014 the spacing is the seasons.",
+          "abstract": "The track the overhead sun takes each day, one line per day from the June solstice on the Tropic of Cancer to the December solstice on the Tropic of Capricorn. The return half of the year retraces the same latitudes, so it is not drawn. The lines crowd at the solstices, where the sun turns, and spread at the equinox, where it crosses the equator fastest — the spacing is the seasons.",
           "attributes": {
             "translations": [
               {
@@ -3111,7 +3111,7 @@
               {
                 "name": "declination",
                 "translation": "declination",
-                "unit": "\u00b0"
+                "unit": "°"
               }
             ]
           }
@@ -3157,7 +3157,21 @@
       "enabled": true,
       "data": "data/paleo/merdith2021",
       "to": 1000,
-      "scenes": "data/paleo"
+      "scenes": "data/paleo",
+      "models": [
+        {
+          "id": "merdith2021",
+          "label": "Merdith 2021 — 1000 Ma",
+          "data": "data/paleo/merdith2021",
+          "to": 1000
+        },
+        {
+          "id": "muller2019",
+          "label": "Müller 2019 — 250 Ma",
+          "data": "data/paleo/muller2019",
+          "to": 250
+        }
+      ]
     },
     "mainToolbar": {
       "type": "toolbar",

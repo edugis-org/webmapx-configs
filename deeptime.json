@@ -24,6 +24,12 @@
         "type": "geojson",
         "data": "internalfunc://paleo-coastlines?data=data/paleo/merdith2021&ma={ma}",
         "attribution": "Merdith et al. 2021 plate model (CC-BY-4.0), reconstructed in the browser"
+      },
+      {
+        "id": "paleo-plates-source",
+        "type": "geojson",
+        "data": "internalfunc://paleo-plates?data=data/paleo/muller2019/plates&ma={ma}",
+        "attribution": "Müller et al. 2019 plate model, topologies via GPlates Web Service"
       }
     ],
     "layers": [
@@ -60,7 +66,43 @@
         },
         "metadata": {
           "title": "Palaeo-coastlines",
-          "abstract": "Where the land was, at the age the Deep time tool is set to. Each polygon is coloured by the continent it belongs to *today*, so a single mass splitting into Africa and South America is legible as exactly that. Not a stack of stored maps: the coastlines are held once, at present day, together with the rotation carrying each tectonic plate back through time, and the position at any age is worked out in the browser \u2014 which is why the slider is continuous rather than stepped, and why the whole billion-year model is about three megabytes instead of three hundred. Land that had not formed yet is absent rather than adrift: the Galapagos are four million years old and simply do not appear before that. Coastlines are meaningful for roughly the last 400 million years; the plate motions themselves go back a billion."
+          "abstract": "Where the land was, at the age the Deep time tool is set to. Each polygon is coloured by the continent it belongs to *today*, so a single mass splitting into Africa and South America is legible as exactly that. Not a stack of stored maps: the coastlines are held once, at present day, together with the rotation carrying each tectonic plate back through time, and the position at any age is worked out in the browser — which is why the slider is continuous rather than stepped, and why the whole billion-year model is about three megabytes instead of three hundred. Land that had not formed yet is absent rather than adrift: the Galapagos are four million years old and simply do not appear before that. Coastlines are meaningful for roughly the last 400 million years; the plate motions themselves go back a billion."
+        }
+      },
+      {
+        "id": "paleo-deforming",
+        "type": "fill",
+        "title": "Deforming zones",
+        "source": "paleo-plates-source",
+        "filter": [
+          "==",
+          [
+            "get",
+            "deforming"
+          ],
+          true
+        ],
+        "paint": {
+          "fill-color": "#e63946",
+          "fill-opacity": 0.35,
+          "fill-outline-color": "#7a1420"
+        },
+        "metadata": {
+          "abstract": "Where crust is being stretched or squeezed rather than moving rigidly — the collision zones. Müller et al. 2019."
+        }
+      },
+      {
+        "id": "paleo-plate-boundaries",
+        "type": "line",
+        "title": "Plate boundaries",
+        "source": "paleo-plates-source",
+        "paint": {
+          "line-color": "#33302b",
+          "line-width": 1.2,
+          "line-opacity": 0.9
+        },
+        "metadata": {
+          "abstract": "Plate boundaries at the age on the slider, sampled every 10 Ma. Müller et al. 2019."
         }
       }
     ]
@@ -70,6 +112,14 @@
       {
         "ref": "paleo-coastlines",
         "visible": true
+      },
+      {
+        "ref": "paleo-deforming",
+        "visible": true
+      },
+      {
+        "ref": "paleo-plate-boundaries",
+        "visible": true
       }
     ]
   },
@@ -78,7 +128,21 @@
       "enabled": true,
       "data": "data/paleo/merdith2021",
       "to": 1000,
-      "scenes": "data/paleo"
+      "scenes": "data/paleo",
+      "models": [
+        {
+          "id": "merdith2021",
+          "label": "Merdith 2021 — 1000 Ma",
+          "data": "data/paleo/merdith2021",
+          "to": 1000
+        },
+        {
+          "id": "muller2019",
+          "label": "Müller 2019 — 250 Ma",
+          "data": "data/paleo/muller2019",
+          "to": 250
+        }
+      ]
     },
     "layerOverview": {
       "type": "layerOverview",
