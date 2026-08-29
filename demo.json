@@ -3156,7 +3156,8 @@
     "paleotime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
-      "to": 1000
+      "to": 1000,
+      "scenes": "data/paleo"
     },
     "mainToolbar": {
       "type": "toolbar",
