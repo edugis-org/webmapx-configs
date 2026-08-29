@@ -1,0 +1,65 @@
+name: validate configs
+
+on:
+  push:
+  pull_request:
+  # Weekly, because these configs can also break without anyone touching them:
+  # webmapx's main branch moves underneath them.
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    # The matrix is the point of this workflow. A config naming a tool that
+    # only exists in main passes there and fails against the released version,
+    # which tells you what it actually is: not a typo, but a config that has
+    # run ahead of the code. Validated against one version, both look the same
+    # — which is to say they look like nothing, since webmapx skips what it
+    # does not recognise and carries on.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: main
+            ref: main
+          # Add a released tag here as soon as one ships webmapx-validate; npm's
+          # 0.2.2 predates the CLI, so there is nothing older to pin yet.
+          # - name: v0.2.3
+          #   ref: v0.2.3
+
+    name: webmapx@${{ matrix.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # webmapx is built from source rather than installed from npm because the
+      # validator CLI is not in a published release yet. Swap this for a plain
+      # `npm install @edugis-org/webmapx@<version>` once one ships it — the
+      # validate script takes the built CLI's path either way.
+      - name: Check out webmapx (${{ matrix.ref }})
+        uses: actions/checkout@v4
+        with:
+          repository: edugis-org/webmapx
+          ref: ${{ matrix.ref }}
+          path: webmapx-checkout
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build the validator
+        working-directory: webmapx-checkout
+        # The postinstall downloads a browser for webmapx's own UI tests, which
+        # this job has no use for.
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          npm ci --ignore-scripts
+          npm run build:lib
+
+      - name: Validate every config
+        env:
+          WEBMAPX_VALIDATE: ${{ github.workspace }}/webmapx-checkout/dist-lib/webmapx-validate.js
+        run: npm run validate

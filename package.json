@@ -1,0 +1,11 @@
+{
+  "name": "webmapx-configs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Map configurations for webmapx, validated against the versions of webmapx that have to read them.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "validate:strict": "node scripts/validate.mjs --strict"
+  }
+}
