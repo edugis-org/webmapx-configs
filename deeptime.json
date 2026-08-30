@@ -134,14 +134,20 @@
           "id": "merdith2021",
           "label": "Merdith 2021 — 1000 Ma",
           "data": "data/paleo/merdith2021",
-          "to": 1000
+          "to": 1000,
+          "attribution": "Coastlines: <a href=\"https://doi.org/10.1016/j.earscirev.2020.103477\" target=\"_blank\" rel=\"noopener\">Merdith et al. 2021</a>, via <a href=\"https://gwsdoc.gplates.org/\" target=\"_blank\" rel=\"noopener\">GPlates Web Service</a> (CC BY 4.0)",
+          "abstract": "Present-day coastlines carried back to the chosen age on the plates they ride, using the Merdith et al. (2021) rotation model, which reaches 1000 Ma. The shapes are today\u2019s outlines rotated as rigid blocks: crust that has since been shortened or stretched is not shown, so continents meet later here than the rocks say. Latitude is well constrained by palaeomagnetism; longitude in deep time is far less certain."
         },
         {
           "id": "muller2019",
           "label": "Müller 2019 — 250 Ma",
           "data": "data/paleo/muller2019",
           "to": 250,
-          "plates": "data/paleo/muller2019/plates"
+          "plates": "data/paleo/muller2019/plates",
+          "attribution": "Coastlines: <a href=\"https://doi.org/10.1029/2018TC005462\" target=\"_blank\" rel=\"noopener\">M\u00fcller et al. 2019</a>, via <a href=\"https://gwsdoc.gplates.org/\" target=\"_blank\" rel=\"noopener\">GPlates Web Service</a> (CC BY 4.0)",
+          "abstract": "Present-day coastlines rotated to the chosen age using the M\u00fcller et al. (2019) model, which reaches 250 Ma and carries deforming plate boundaries. As with any rigid rotation, crust that has since been shortened is missing from the outlines \u2014 the deforming zones layer is where that crust is shown.",
+          "platesAttribution": "Plate boundaries and deforming networks: <a href=\"https://doi.org/10.1029/2018TC005462\" target=\"_blank\" rel=\"noopener\">M\u00fcller et al. 2019</a>, via <a href=\"https://gwsdoc.gplates.org/\" target=\"_blank\" rel=\"noopener\">GPlates Web Service</a> (CC BY 4.0)",
+          "platesAbstract": "Plate boundaries sampled every 5 Ma, with the deforming networks drawn separately. A boundary has no continuity through time \u2014 boundaries are born, die and change in number \u2014 so these are snapshots that snap to the nearest step rather than moving smoothly like the coastlines. The deforming zones are continental crust being squeezed: the Greater India mesh is the ~3 million km\u00b2 now folded into Tibet and the Himalaya, which is why the collision begins here some 45 Ma earlier than reconstructed coastlines suggest."
         }
       ]
     },
