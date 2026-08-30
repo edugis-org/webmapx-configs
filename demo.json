@@ -3169,7 +3169,8 @@
           "id": "muller2019",
           "label": "Müller 2019 — 250 Ma",
           "data": "data/paleo/muller2019",
-          "to": 250
+          "to": 250,
+          "plates": "data/paleo/muller2019/plates"
         }
       ]
     },
