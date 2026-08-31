@@ -3409,96 +3409,6 @@
           "icon": "rulers"
         },
         {
-          "id": "geolocation",
-          "type": "geolocation",
-          "enabled": true,
-          "title": "Geolocation",
-          "icon": "crosshair"
-        },
-        {
-          "id": "3d",
-          "type": "3d",
-          "enabled": true,
-          "title": "3D",
-          "icon": "box"
-        },
-        {
-          "id": "draw",
-          "type": "draw",
-          "enabled": true,
-          "title": "Draw",
-          "icon": "pencil"
-        },
-        {
-          "id": "toolbox",
-          "type": "toolbox",
-          "enabled": true,
-          "title": "Toolbox",
-          "icon": "grid",
-          "items": [
-            {
-              "id": "measure2",
-              "type": "measure",
-              "enabled": true,
-              "title": "Measure",
-              "icon": "rulers",
-              "keywords": [
-                "distance",
-                "length",
-                "area",
-                "measurement",
-                "ruler"
-              ]
-            },
-            {
-              "id": "info2",
-              "type": "info",
-              "enabled": true,
-              "title": "Feature info",
-              "icon": "info-circle",
-              "keywords": [
-                "feature",
-                "attributes",
-                "identify",
-                "click",
-                "query"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "timeSlider",
-          "type": "timeSlider",
-          "enabled": true,
-          "title": "Time",
-          "icon": "clock",
-          "keywords": [
-            "time",
-            "date",
-            "clock",
-            "sun",
-            "moon",
-            "season",
-            "daylight"
-          ]
-        },
-        {
-          "id": "paleotime",
-          "type": "paleotime",
-          "enabled": true,
-          "title": "Deep time",
-          "keywords": [
-            "plate",
-            "tectonics",
-            "continent",
-            "pangaea",
-            "geology",
-            "palaeo",
-            "coastline",
-            "drift"
-          ]
-        },
-        {
           "type": "spacer",
           "enabled": true
         },
@@ -3508,13 +3418,6 @@
           "enabled": true,
           "title": "Settings",
           "icon": "gear"
-        },
-        {
-          "id": "stories",
-          "type": "stories",
-          "enabled": true,
-          "title": "Stories",
-          "icon": "book"
         }
       ]
     },
