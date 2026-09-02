@@ -3153,7 +3153,7 @@
       "provider": "nominatim",
       "attribution": "&copy; OpenStreetMap contributors | &copy; Nominatim"
     },
-    "paleotime": {
+    "deeptime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
       "to": 1000,

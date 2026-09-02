@@ -124,7 +124,7 @@
     ]
   },
   "tools": {
-    "paleotime": {
+    "deeptime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
       "to": 1000,
@@ -167,8 +167,8 @@
           "enabled": true
         },
         {
-          "type": "paleotime",
-          "id": "paleotime",
+          "type": "deeptime",
+          "id": "deeptime",
           "enabled": true
         }
       ]
