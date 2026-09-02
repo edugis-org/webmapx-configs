@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-layer-overview",
-    "title": "Legend",
-    "description": "Documentation demo for the legend: three layers of different kinds, so there is something to reorder, restyle, hide and zoom to.",
+    "id": "docs-stories",
+    "title": "Stories",
+    "description": "Documentation demo for the stories tool: a three-step guided tour over a basemap and one polygon layer.",
     "language": "en"
   },
   "map": {
-    "label": "Legend",
+    "label": "Stories",
     "type": "maplibre",
     "center": [
-      8.0,
-      47.0
+      10,
+      25
     ],
-    "zoom": 5
+    "zoom": 1
   },
   "layerData": {
     "sources": [
@@ -28,20 +28,6 @@
         "tileSize": 256,
         "maxzoom": 19,
         "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap contributors</a>"
-      },
-      {
-        "id": "elevation-source",
-        "type": "raster-dem",
-        "tiles": [
-          "https://t1.edugis.nl/mapproxy/nextzenelevation/wmts/nextzenelevation/webmercator/{z}/{x}/{y}.png",
-          "https://t2.edugis.nl/mapproxy/nextzenelevation/wmts/nextzenelevation/webmercator/{z}/{x}/{y}.png",
-          "https://t3.edugis.nl/mapproxy/nextzenelevation/wmts/nextzenelevation/webmercator/{z}/{x}/{y}.png",
-          "https://t4.edugis.nl/mapproxy/nextzenelevation/wmts/nextzenelevation/webmercator/{z}/{x}/{y}.png"
-        ],
-        "tileSize": 256,
-        "encoding": "terrarium",
-        "maxzoom": 15,
-        "attribution": "NextZen"
       },
       {
         "id": "countries-source",
@@ -68,18 +54,6 @@
           "reference": true,
           "swatch": "#f2efe9",
           "abstract": "Plain OpenStreetMap raster tiles. A measurement needs something recognisable underneath it — a canal, a block, a runway — so the numbers can be checked against the world."
-        }
-      },
-      {
-        "id": "relief",
-        "type": "hillshade",
-        "title": "Relief (hillshade)",
-        "source": "elevation-source",
-        "paint": {
-          "hillshade-exaggeration": 0.2
-        },
-        "metadata": {
-          "abstract": "An elevation source, drawn as hillshade. It is here for a second reason: with an elevation layer active the measure tool draws a height profile under the line it has just measured."
         }
       },
       {
@@ -119,18 +93,85 @@
       {
         "ref": "osm",
         "visible": true
-      },
-      {
-        "ref": "relief",
-        "visible": true
-      },
-      {
-        "ref": "countries",
-        "visible": true
       }
     ]
   },
   "tools": {
+    "stories": {
+      "type": "stories",
+      "enabled": true,
+      "stories": [
+        {
+          "name": "A guided tour in three steps",
+          "description": "What a story does: move the camera, choose the layers, and say something about each stop.",
+          "chapters": [
+            {
+              "id": "tour",
+              "title": "Three stops",
+              "buttonText": "Start",
+              "steps": [
+                {
+                  "title": "The world",
+                  "html": "<p>A story step sets the <strong>camera</strong> and the <strong>layers</strong>, then says something about what you are looking at. This one starts with the basemap alone.</p>",
+                  "state": {
+                    "layers": [
+                      "osm",
+                      "countries"
+                    ],
+                    "hiddenLayers": [
+                      "countries"
+                    ],
+                    "view": {
+                      "center": [
+                        10,
+                        25
+                      ],
+                      "zoom": 1
+                    }
+                  }
+                },
+                {
+                  "title": "Add a layer",
+                  "html": "<p>The next step turns the country polygons on. Nothing was clicked — the step declares which layers belong to it, and the map follows.</p>",
+                  "state": {
+                    "layers": [
+                      "osm",
+                      "countries"
+                    ],
+                    "hiddenLayers": [],
+                    "view": {
+                      "center": [
+                        10,
+                        45
+                      ],
+                      "zoom": 3
+                    }
+                  }
+                },
+                {
+                  "title": "Somewhere in particular",
+                  "html": "<p>And a step can go anywhere. When the story closes, the map returns exactly to the state it was in before it opened.</p>",
+                  "state": {
+                    "layers": [
+                      "osm",
+                      "countries"
+                    ],
+                    "hiddenLayers": [],
+                    "view": {
+                      "center": [
+                        4.9,
+                        52.37
+                      ],
+                      "zoom": 6
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "layerOverview": {
       "type": "layerOverview",
       "enabled": true
@@ -142,6 +183,11 @@
       "orientation": "vertical",
       "items": [
         {
+          "type": "stories",
+          "id": "stories",
+          "enabled": true
+        },
+        {
           "type": "layerOverview",
           "id": "layerOverview",
           "enabled": true
@@ -152,11 +198,6 @@
       "type": "navigation",
       "enabled": true,
       "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
     },
     "attribution": {
       "type": "attribution",

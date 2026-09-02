@@ -1,5 +1,6 @@
 {
   "version": 0,
+  "apiKeysFile": "../../apikeys.json",
   "project": {
     "id": "docs-measure",
     "title": "Measure",

@@ -2,13 +2,13 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-layer-overview",
-    "title": "Legend",
-    "description": "Documentation demo for the legend: three layers of different kinds, so there is something to reorder, restyle, hide and zoom to.",
+    "id": "docs-layerlegend3d",
+    "title": "Legend 3D",
+    "description": "Documentation demo for the 3D legend: three stacked layers, drawn as the stack they are.",
     "language": "en"
   },
   "map": {
-    "label": "Legend",
+    "label": "Legend 3D",
     "type": "maplibre",
     "center": [
       8.0,
@@ -131,6 +131,10 @@
     ]
   },
   "tools": {
+    "layerLegend3d": {
+      "type": "layerLegend3d",
+      "enabled": true
+    },
     "layerOverview": {
       "type": "layerOverview",
       "enabled": true
@@ -142,6 +146,11 @@
       "orientation": "vertical",
       "items": [
         {
+          "type": "layerLegend3d",
+          "id": "layerLegend3d",
+          "enabled": true
+        },
+        {
           "type": "layerOverview",
           "id": "layerOverview",
           "enabled": true
@@ -152,11 +161,6 @@
       "type": "navigation",
       "enabled": true,
       "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
     },
     "attribution": {
       "type": "attribution",

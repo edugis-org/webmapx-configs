@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-draw",
-    "title": "Draw",
-    "description": "Documentation demo for the draw tool: a plain basemap at street scale, so there is something to trace.",
+    "id": "docs-scale",
+    "title": "Scale bar",
+    "description": "Documentation demo for the scale bar, on a street map where the distances are familiar.",
     "language": "en"
   },
   "map": {
-    "label": "Draw",
+    "label": "Scale bar",
     "type": "maplibre",
     "center": [
       4.895,
       52.372
     ],
-    "zoom": 14
+    "zoom": 12
   },
   "layerData": {
     "sources": [
@@ -53,37 +53,6 @@
     ]
   },
   "tools": {
-    "draw": {
-      "type": "draw",
-      "enabled": true
-    },
-    "layerOverview": {
-      "type": "layerOverview",
-      "enabled": true
-    },
-    "mainToolbar": {
-      "type": "toolbar",
-      "enabled": true,
-      "position": "top-left",
-      "orientation": "vertical",
-      "items": [
-        {
-          "type": "layerOverview",
-          "id": "layerOverview",
-          "enabled": true
-        },
-        {
-          "type": "draw",
-          "id": "draw",
-          "enabled": true
-        }
-      ]
-    },
-    "navigation": {
-      "type": "navigation",
-      "enabled": true,
-      "position": "top-right"
-    },
     "scale": {
       "type": "scale",
       "enabled": true,

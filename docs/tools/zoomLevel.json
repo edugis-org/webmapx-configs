@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-draw",
-    "title": "Draw",
-    "description": "Documentation demo for the draw tool: a plain basemap at street scale, so there is something to trace.",
+    "id": "docs-zoomlevel",
+    "title": "Zoom level",
+    "description": "Documentation demo for the zoom-level readout, which also takes a zoom typed into it.",
     "language": "en"
   },
   "map": {
-    "label": "Draw",
+    "label": "Zoom level",
     "type": "maplibre",
     "center": [
       4.895,
       52.372
     ],
-    "zoom": 14
+    "zoom": 12
   },
   "layerData": {
     "sources": [
@@ -53,41 +53,10 @@
     ]
   },
   "tools": {
-    "draw": {
-      "type": "draw",
-      "enabled": true
-    },
-    "layerOverview": {
-      "type": "layerOverview",
-      "enabled": true
-    },
-    "mainToolbar": {
-      "type": "toolbar",
+    "zoomLevel": {
+      "type": "zoomLevel",
       "enabled": true,
-      "position": "top-left",
-      "orientation": "vertical",
-      "items": [
-        {
-          "type": "layerOverview",
-          "id": "layerOverview",
-          "enabled": true
-        },
-        {
-          "type": "draw",
-          "id": "draw",
-          "enabled": true
-        }
-      ]
-    },
-    "navigation": {
-      "type": "navigation",
-      "enabled": true,
-      "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
+      "position": "bottom-right"
     },
     "attribution": {
       "type": "attribution",

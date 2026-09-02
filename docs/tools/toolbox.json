@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-draw",
-    "title": "Draw",
-    "description": "Documentation demo for the draw tool: a plain basemap at street scale, so there is something to trace.",
+    "id": "docs-toolbox",
+    "title": "Toolbox",
+    "description": "Documentation demo for the toolbox: several tools behind one button, as a scrolling row of icons.",
     "language": "en"
   },
   "map": {
-    "label": "Draw",
+    "label": "Toolbox",
     "type": "maplibre",
     "center": [
       4.895,
       52.372
     ],
-    "zoom": 14
+    "zoom": 12
   },
   "layerData": {
     "sources": [
@@ -53,9 +53,26 @@
     ]
   },
   "tools": {
-    "draw": {
-      "type": "draw",
-      "enabled": true
+    "toolbox": {
+      "type": "toolbox",
+      "enabled": true,
+      "items": [
+        {
+          "type": "measure",
+          "id": "measure",
+          "enabled": true
+        },
+        {
+          "type": "info",
+          "id": "info",
+          "enabled": true
+        },
+        {
+          "type": "draw",
+          "id": "draw",
+          "enabled": true
+        }
+      ]
     },
     "layerOverview": {
       "type": "layerOverview",
@@ -68,13 +85,13 @@
       "orientation": "vertical",
       "items": [
         {
-          "type": "layerOverview",
-          "id": "layerOverview",
+          "type": "toolbox",
+          "id": "toolbox",
           "enabled": true
         },
         {
-          "type": "draw",
-          "id": "draw",
+          "type": "layerOverview",
+          "id": "layerOverview",
           "enabled": true
         }
       ]
@@ -83,11 +100,6 @@
       "type": "navigation",
       "enabled": true,
       "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
     },
     "attribution": {
       "type": "attribution",

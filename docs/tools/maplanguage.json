@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-draw",
-    "title": "Draw",
-    "description": "Documentation demo for the draw tool: a plain basemap at street scale, so there is something to trace.",
+    "id": "docs-maplanguage",
+    "title": "Map language",
+    "description": "Documentation demo for the map-language tool: a vector basemap whose labels carry names in many languages, over a region where the local script differs from English.",
     "language": "en"
   },
   "map": {
-    "label": "Draw",
+    "label": "Map language",
     "type": "maplibre",
     "center": [
-      4.895,
-      52.372
+      30.3,
+      59.94
     ],
-    "zoom": 14
+    "zoom": 10
   },
   "layerData": {
     "sources": [
@@ -41,20 +41,36 @@
           "swatch": "#f2efe9",
           "abstract": "Plain OpenStreetMap raster tiles. A measurement needs something recognisable underneath it — a canal, a block, a runway — so the numbers can be checked against the world."
         }
+      },
+      {
+        "id": "openfreemap-liberty",
+        "type": "style",
+        "url": "https://tiles.openfreemap.org/styles/liberty",
+        "singleGroup": "basemap",
+        "title": "OpenFreeMap Liberty (style)",
+        "attribution": "&copy; OpenStreetMap contributors | &copy; OpenFreeMap",
+        "layers": [],
+        "metadata": {
+          "swatch": "#f8f4f0",
+          "supportedEngines": [
+            "maplibre",
+            "openlayers"
+          ]
+        }
       }
     ]
   },
   "state": {
     "activeLayers": [
       {
-        "ref": "osm",
+        "ref": "openfreemap-liberty",
         "visible": true
       }
     ]
   },
   "tools": {
-    "draw": {
-      "type": "draw",
+    "maplanguage": {
+      "type": "maplanguage",
       "enabled": true
     },
     "layerOverview": {
@@ -68,13 +84,13 @@
       "orientation": "vertical",
       "items": [
         {
-          "type": "layerOverview",
-          "id": "layerOverview",
+          "type": "maplanguage",
+          "id": "maplanguage",
           "enabled": true
         },
         {
-          "type": "draw",
-          "id": "draw",
+          "type": "layerOverview",
+          "id": "layerOverview",
           "enabled": true
         }
       ]
@@ -83,11 +99,6 @@
       "type": "navigation",
       "enabled": true,
       "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
     },
     "attribution": {
       "type": "attribution",

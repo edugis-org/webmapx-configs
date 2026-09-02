@@ -2,19 +2,19 @@
   "version": 0,
   "apiKeysFile": "../../apikeys.json",
   "project": {
-    "id": "docs-draw",
-    "title": "Draw",
-    "description": "Documentation demo for the draw tool: a plain basemap at street scale, so there is something to trace.",
+    "id": "docs-isochrone",
+    "title": "Isochrone",
+    "description": "Documentation demo for the isochrone tool: a street map to draw travel-time areas on, with the measure tool alongside so a travel-time shape can be compared against a straight-line distance.",
     "language": "en"
   },
   "map": {
-    "label": "Draw",
+    "label": "Isochrone",
     "type": "maplibre",
     "center": [
       4.895,
       52.372
     ],
-    "zoom": 14
+    "zoom": 11
   },
   "layerData": {
     "sources": [
@@ -53,8 +53,12 @@
     ]
   },
   "tools": {
-    "draw": {
-      "type": "draw",
+    "isochrone": {
+      "type": "isochrone",
+      "enabled": true
+    },
+    "measure": {
+      "type": "measure",
       "enabled": true
     },
     "layerOverview": {
@@ -68,13 +72,18 @@
       "orientation": "vertical",
       "items": [
         {
-          "type": "layerOverview",
-          "id": "layerOverview",
+          "type": "isochrone",
+          "id": "isochrone",
           "enabled": true
         },
         {
-          "type": "draw",
-          "id": "draw",
+          "type": "measure",
+          "id": "measure",
+          "enabled": true
+        },
+        {
+          "type": "layerOverview",
+          "id": "layerOverview",
           "enabled": true
         }
       ]
@@ -83,11 +92,6 @@
       "type": "navigation",
       "enabled": true,
       "position": "top-right"
-    },
-    "scale": {
-      "type": "scale",
-      "enabled": true,
-      "position": "bottom-left"
     },
     "attribution": {
       "type": "attribution",
