@@ -15,7 +15,8 @@
       10
     ],
     "zoom": 1,
-    "backgroundColor": "#0b3d66"
+    "projection": "globe",
+    "backgroundColor": "#05070f"
   },
   "layerData": {
     "sources": [
@@ -33,6 +34,18 @@
       }
     ],
     "layers": [
+      {
+        "id": "sea",
+        "type": "background",
+        "title": "Sea",
+        "paint": {
+          "background-color": "#aad3df"
+        },
+        "metadata": {
+          "legendRole": "background",
+          "abstract": "The sea the continents sit in. There is no ocean dataset here: the water is simply what shows through where no land polygon has been reconstructed, so it needs a colour of its own. Painted as a background style layer rather than by map.backgroundColor, because that colour is also the canvas clear colour and would turn the space around the globe blue as well."
+        }
+      },
       {
         "id": "paleo-coastlines",
         "type": "fill",
@@ -110,6 +123,10 @@
   "state": {
     "activeLayers": [
       {
+        "ref": "sea",
+        "visible": true
+      },
+      {
         "ref": "paleo-coastlines",
         "visible": true
       },
@@ -151,6 +168,10 @@
         }
       ]
     },
+    "projection": {
+      "type": "projection",
+      "enabled": true
+    },
     "layerOverview": {
       "type": "layerOverview",
       "enabled": true
@@ -170,6 +191,11 @@
           "type": "deeptime",
           "id": "deeptime",
           "enabled": true
+        },
+        {
+          "type": "projection",
+          "id": "projection",
+          "enabled": true
         }
       ]
     },
@@ -178,10 +204,15 @@
       "enabled": true,
       "position": "top-right"
     },
+    "fullscreen": {
+      "type": "fullscreen",
+      "enabled": true,
+      "position": "top-right"
+    },
     "attribution": {
       "type": "attribution",
       "enabled": true,
-      "position": "bottom-right"
+      "position": "edge-bottom-right"
     },
     "spinner": {
       "type": "spinner",

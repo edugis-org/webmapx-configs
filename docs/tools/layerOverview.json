@@ -161,7 +161,7 @@
     "attribution": {
       "type": "attribution",
       "enabled": true,
-      "position": "bottom-right"
+      "position": "edge-bottom-right"
     }
   }
 }
