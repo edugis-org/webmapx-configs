@@ -251,6 +251,44 @@ function urlSites(config) {
     return sites;
 }
 
+/**
+ * `source-layer` must name the MVT layer inside the tile, which for
+ * pg_tileserv is the full published id -- `edugis.buurt_2005__the_geom`, not
+ * the `edugis.buurt_2005` the old postgis-mvt-server used. Rewriting a tile
+ * URL therefore invalidates the `source-layer` the config was carrying, and a
+ * layer with the wrong one answers HTTP 200 and draws nothing, so --probe
+ * cannot see the breakage. Aligning them is a separate pass because it needs
+ * the enclosing style object, which urlSites() has deliberately forgotten.
+ */
+function sourceLayerFixes(config) {
+    const fixes = [];
+    const idOf = (url) => (typeof url === 'string' ? url.match(/\/tiles\/([^/]+)\/\{z\}/)?.[1] : undefined);
+    const visit = (node) => {
+        if (Array.isArray(node)) { node.forEach(visit); return; }
+        if (!node || typeof node !== 'object') return;
+        if (node.sources && typeof node.sources === 'object' && Array.isArray(node.layers)) {
+            const published = new Map();
+            for (const [name, source] of Object.entries(node.sources)) {
+                if (!source || source.type !== 'vector') continue;
+                const urls = source.tiles ?? (typeof source.url === 'string' ? [source.url] : []);
+                for (const u of urls) {
+                    const id = idOf(u);
+                    if (id) published.set(name, id);
+                }
+            }
+            for (const layer of node.layers) {
+                if (!layer || typeof layer !== 'object') continue;
+                const want = published.get(layer.source);
+                if (!want || layer['source-layer'] === want) continue;
+                fixes.push({ layer, from: layer['source-layer'], to: want, in: node.id ?? node.title });
+            }
+        }
+        for (const v of Object.values(node)) visit(v);
+    };
+    visit(config);
+    return fixes;
+}
+
 function planUrl(url) {
     for (const m of MIGRATED) {
         if (m.match.test(url)) return { rule: m.rule, url, already: true };
@@ -651,6 +689,13 @@ if (mode === 'probe') {
     show('not published', results.unpublished, '❓');
     show('error', results.fail, '❌');
     show('unreachable', results.unreachable, '💥');
+    const stale = sourceLayerFixes(config);
+    if (stale.length) {
+        console.log(`⚠ ${stale.length} layer(s) name a source-layer the tile does not contain — they return HTTP 200 and draw nothing.`);
+        for (const f of stale.slice(0, 8)) console.log(`   ${String(f.from).padEnd(50)} → ${f.to}`);
+        if (stale.length > 8) console.log(`   … and ${stale.length - 8} more`);
+        console.log('  Run --write to align them.\n');
+    }
     console.log(`${results.ok.length}/${planned.length} planned URLs serve data. ${blocked.length} still have no rule.`);
     process.exit(results.fail.length + results.unreachable.length > 0 ? 1 : 0);
 }
@@ -706,6 +751,11 @@ for (const e of planned) {
     if (e.plan.already) continue;
     for (const site of e.sites) { site.set(e.plan.url); changed++; }
 }
+const fixes = sourceLayerFixes(config);
+for (const f of fixes) f.layer['source-layer'] = f.to;
 writeFileSync(path, JSON.stringify(config, null, 2) + '\n');
 console.log(`rewrote ${changed} URL(s) across ${planned.length} distinct services in ${file}`);
+if (fixes.length) {
+    console.log(`aligned ${fixes.length} source-layer name(s) with the published tile layer, e.g. ${fixes[0].from} → ${fixes[0].to}`);
+}
 console.log(`${blocked.length} URLs left unchanged — no rule yet. Run --plan to see them.`);
