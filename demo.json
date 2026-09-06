@@ -3409,6 +3409,13 @@
           "icon": "rulers"
         },
         {
+          "id": "compare",
+          "type": "compare",
+          "enabled": true,
+          "title": "Compare",
+          "icon": "layout-split"
+        },
+        {
           "type": "spacer",
           "enabled": true
         },
