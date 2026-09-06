@@ -90,6 +90,47 @@ const VIEW_SEP = '__';
  */
 const DEFAULT_TILE_ORIGIN = 'https://tiles.blankert.com';
 
+/**
+ * Catalogs to drop rather than repoint.
+ *
+ * Their layers were never migrated, and rebuilding them from a 2010
+ * mapfile is the wrong move: two still work upstream but are 2005/2010-era
+ * extracts whose MapServer classes the converter could not translate, and
+ * three were already broken before the migration (blank or no response
+ * when probed against the live old stack). All five are better renewed
+ * from current source data. See edugis-geoserver/scripts/layers_todo.md.
+ *
+ * Left in the config they would render nothing, which is worse than an
+ * absent category: a student cannot tell a broken layer from an empty one.
+ */
+const DROP_CATALOGS = new Set([
+    'cbs_bodemgebruik.xml',   // no response upstream
+    'ehs.xml',                // blank upstream
+    'kadaster.xml',           // blank upstream
+    'voorzieningen_onderwijs.xml',  // works upstream, needs renewing
+    'voorzieningen_ov.xml',         // works upstream, needs renewing
+    // Pre-2020 election results: superseded, and 93 layers of a
+    // twelve-party by three-aggregation-level grid nobody asks for now.
+    'verkiezingen.xml',
+    'verkiezingen_2010.xml',
+    'verkiezingen_2012.xml',
+]);
+
+/**
+ * The old catalogs are frozen MapServer 5.6.7 capabilities documents, one
+ * per theme, each listing ~12 layers. GeoServer serves everything from one
+ * endpoint, so pointing a category at it directly would show all ~600
+ * layers. The narrowing moves into allowedLayers, which webmapx already
+ * applies -- and since each mapfile layer is now published under its own
+ * name (edugis-geoserver 16a0b2f), the old names carry over unchanged.
+ *
+ * Kept as a live GetCapabilities rather than expanded into explicit layer
+ * entries: the fetch is lazy, so a category nobody opens costs nothing,
+ * and inlining ~500 layers would make every visitor download a tree they
+ * will not expand.
+ */
+const OLD_CATALOG = /^https?:\/\/kaart\.edugis\.nl\/data\/nederland\/([^/]+\.xml)$/i;
+
 function tileXY({ lon, lat, zoom }) {
     const n = 2 ** zoom;
     const x = Math.floor((lon + 180) / 360 * n);
@@ -386,11 +427,125 @@ ${calls.join('\n')}
 `;
 }
 
+/** Layer names in a WMS 1.1.1 capabilities document, minus the service entry. */
+function capabilityLayerNames(xml) {
+    return [...xml.matchAll(/<Name>([^<]+)<\/Name>/g)]
+        .map((m) => m[1])
+        .filter((n) => n !== 'OGC:WMS' && n !== 'default');
+}
+
+/**
+ * Repoint every old per-theme catalog at GeoServer, and drop the ones whose
+ * layers are to be renewed rather than repaired.
+ *
+ * Returns a summary; mutates the config in place.
+ */
+async function expandCapabilities(config, base) {
+    const geoserverCaps = `${base}/geoserver/edugis/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.1.1`;
+    const summary = { repointed: [], dropped: [], failed: [], unavailable: [] };
+
+    // What GeoServer actually publishes. A name the migration skipped would
+    // otherwise sit in allowedLayers and render nothing -- and a layer that
+    // draws nothing is worse than an absent one, because a student cannot
+    // tell it from an empty map.
+    let available = null;
+    try {
+        // Cache-Control bypasses the edge's year-long cache for capabilities
+        // (nginx.conf honours it for GetCapabilities only). Without it this
+        // reads a document from before the last migration run and drops every
+        // layer published since as "not available".
+        const res = await fetch(geoserverCaps, {
+            headers: { 'Cache-Control': 'no-cache' },
+            signal: AbortSignal.timeout(TIMEOUT_MS * 4),
+        });
+        if (res.ok) {
+            const xml = await res.text();
+            available = new Set(capabilityLayerNames(xml).flatMap((n) => [n, n.split(':').pop()]));
+        }
+    } catch { /* unreachable: fall through and keep every name */ }
+    if (!available) {
+        console.log('⚠ could not read GeoServer capabilities; allowedLayers left unverified');
+    }
+
+    // Collect nodes with their containing array, so a dropped catalog can be
+    // removed rather than left pointing at nothing.
+    const found = [];
+    const visit = (node, parent, index) => {
+        if (Array.isArray(node)) { node.forEach((v, i) => visit(v, node, i)); return; }
+        if (!node || typeof node !== 'object') return;
+        if (node.type === 'getcapabilities' && typeof node.url === 'string') {
+            found.push({ node, parent, index });
+        }
+        for (const v of Object.values(node)) visit(v, null, null);
+    };
+    visit(config, null, null);
+
+    const removals = [];
+    for (const { node, parent, index } of found) {
+        const m = node.url.match(OLD_CATALOG);
+        if (!m) continue;                       // qgis/mapproxy/live mapserver: untouched
+        const file = m[1];
+
+        if (DROP_CATALOGS.has(file)) {
+            summary.dropped.push({ file, label: node.label });
+            if (parent) removals.push({ parent, index });
+            continue;
+        }
+
+        let names;
+        try {
+            const res = await fetch(node.url, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            names = capabilityLayerNames(await res.text());
+        } catch (e) {
+            summary.failed.push({ file, reason: String(e.message ?? e) });
+            continue;
+        }
+
+        // The old filters applied to the old, narrow document. Fold them into
+        // the allowedLayers list now that the document is the wide one --
+        // deniedLayers against ~600 layers would mean something entirely
+        // different from deniedLayers against twelve.
+        if (Array.isArray(node.allowedLayers)) {
+            names = names.filter((n) => node.allowedLayers.includes(n));
+        } else if (Array.isArray(node.deniedLayers)) {
+            names = names.filter((n) => !node.deniedLayers.includes(n));
+        }
+
+        if (available) {
+            // migrate_mapfile.py normalises hyphens to underscores in layer
+            // names, so a mapfile's "heerlen-ransdael" is published as
+            // "heerlen_ransdael". Match that rather than reporting it missing.
+            const resolved = (n) => (available.has(n) ? n
+                : available.has(n.replace(/-/g, '_')) ? n.replace(/-/g, '_')
+                : null);
+            const missing = names.filter((n) => !resolved(n));
+            if (missing.length) summary.unavailable.push({ file, label: node.label, missing });
+            names = names.map(resolved).filter(Boolean);
+        }
+
+        node.url = geoserverCaps;
+        node.allowedLayers = names;
+        delete node.deniedLayers;
+        // The edge caches whatever WMS url is requested, so the old separate
+        // tile-cache endpoint has nothing left to do.
+        delete node.tilecacheUrl;
+        summary.repointed.push({ file, label: node.label, layers: names.length });
+    }
+
+    // Remove back-to-front so earlier indices stay valid.
+    for (const { parent, index } of removals.sort((a, b) => b.index - a.index)) {
+        parent.splice(index, 1);
+    }
+    return summary;
+}
+
 // ---------------------------------------------------------------------------
 
 const args = process.argv.slice(2);
 const file = args.find((a) => !a.startsWith('--'));
-const mode = args.includes('--write') ? 'write'
+const mode = args.includes('--capabilities') ? 'capabilities'
+    : args.includes('--write') ? 'write'
     : args.includes('--views') ? 'views'
     : args.includes('--probe') ? 'probe' : 'plan';
 const baseArg = args.indexOf('--base');
@@ -399,7 +554,7 @@ const originArg = args.indexOf('--tile-origin');
 const TILE_ORIGIN = (originArg >= 0 ? args[originArg + 1] : DEFAULT_TILE_ORIGIN).replace(/\/$/, '');
 
 if (!file) {
-    console.error('usage: migrate-services.mjs <config.json> [--plan|--views|--probe --base URL|--write]');
+    console.error('usage: migrate-services.mjs <config.json> [--plan|--capabilities|--views|--probe --base URL|--write]');
     process.exit(2);
 }
 if (mode === 'probe' && !base) {
@@ -410,6 +565,32 @@ if (mode === 'probe' && !base) {
 const path = resolve(file);
 const config = JSON.parse(readFileSync(path, 'utf8'));
 const sites = urlSites(config);
+
+if (mode === 'capabilities') {
+    const origin = TILE_ORIGIN;
+    const r = await expandCapabilities(config, origin);
+    if (r.repointed.length) {
+        console.log(`\n▸ repointed at ${origin}/geoserver/edugis/wms (${r.repointed.length})`);
+        for (const e of r.repointed) console.log(`   ${e.file.padEnd(34)} ${String(e.layers).padStart(3)} layers   ${e.label ?? ''}`);
+    }
+    if (r.dropped.length) {
+        console.log(`\n▸ dropped, to be renewed from source (${r.dropped.length})`);
+        for (const e of r.dropped) console.log(`   ${e.file.padEnd(34)} ${e.label ?? ''}`);
+    }
+    if (r.unavailable.length) {
+        const n = r.unavailable.reduce((a, e) => a + e.missing.length, 0);
+        console.log(`\n▸ omitted, not published by GeoServer (${n})`);
+        for (const e of r.unavailable) console.log(`   ${e.file.padEnd(34)} ${e.missing.join(', ')}`);
+    }
+    if (r.failed.length) {
+        console.log(`\n▸ could not read (${r.failed.length})`);
+        for (const e of r.failed) console.log(`   ${e.file.padEnd(34)} ${e.reason}`);
+    }
+    writeFileSync(path, JSON.stringify(config, null, 2) + '\n');
+    console.log(`\nwrote ${file}`);
+    process.exit(r.failed.length ? 1 : 0);
+}
+
 
 // One entry per distinct URL: a config repeats the same source across layers.
 const byUrl = new Map();
@@ -506,6 +687,20 @@ if (mode === 'plan') {
 }
 
 // --write
+//
+// Run --capabilities FIRST. The hosted-data rule rewrites
+// kaart.edugis.nl/data/nederland/*.xml to a relative data/... path, and the
+// old per-theme catalogs live at exactly those urls -- so a --write first
+// leaves them looking migrated while still pointing at frozen MapServer
+// 5.6.7 documents, and --capabilities afterwards silently matches nothing.
+const unconverted = entries.filter((e) => OLD_CATALOG.test(e.url));
+if (unconverted.length) {
+    console.error(`refusing: ${unconverted.length} old capabilities catalog(s) not yet repointed.`);
+    console.error('Run --capabilities before --write, or those catalogs keep pointing at');
+    console.error('frozen MapServer documents that this rewrite would merely make relative.');
+    process.exit(2);
+}
+
 let changed = 0;
 for (const e of planned) {
     if (e.plan.already) continue;
