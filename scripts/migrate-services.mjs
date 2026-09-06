@@ -77,6 +77,19 @@ const DEFAULT_GEOM = 'geom';
 
 const VIEW_SEP = '__';
 
+/**
+ * Origin serving the tiles and the legacy MapServer bridge, i.e. the
+ * edugis-cache edge. Absolute rather than relative, because the viewer and
+ * the tile cache are different hosts (kaart.edugis.nl vs tiles.edugis.nl)
+ * and always have been -- a root-relative /tiles/... would resolve against
+ * whatever host serves the config. A config already names PDOK, OSM and
+ * ArcGIS absolutely; the cache is one more origin.
+ *
+ * Renaming it later (tiles.edugis.nl, cache.edugis.nl) is a re-run of this
+ * tool with a different --tile-origin.
+ */
+const DEFAULT_TILE_ORIGIN = 'https://tiles.blankert.com';
+
 function tileXY({ lon, lat, zoom }) {
     const n = 2 ** zoom;
     const x = Math.floor((lon + 180) / 360 * n);
@@ -105,8 +118,23 @@ const RULES = [
             const geom = q.get('geom_column') ?? q.get('geomcolumn') ?? DEFAULT_GEOM;
             const columns = parseColumns(q.get('columns'));
             const view = `${table}${VIEW_SEP}${geom}`;
-            const qs = columns.length ? `?properties=${columns.join(',')}` : '';
+            // No ?properties=. The view carries the attribute list, so the url
+            // is just the layer: configs stop repeating 35-column lists, and
+            // more importantly the cache key stops varying by column set --
+            // one url per tile instead of one per combination, which is what
+            // makes a per-layer purge enumerable at all.
+            //
+            // The views are wide (every non-geometry column). For the polygon
+            // layers that is deliberate: one cache serves every thematic map
+            // of the same table, switching theme costs no request, and two
+            // attributes in one tile is what lets a client compare them.
+            // A huge table drawn one attribute at a time (cbs_vk100_2020)
+            // wants narrow named views instead; those are not generated yet.
+            const qs = '';
             const notes = [];
+            if (columns.length) {
+                notes.push(`${columns.length} columns now come from the view`);
+            }
             if (q.get('include_nulls') === '0' || q.get('include_nulls') === 'false') {
                 // pgbrowser drops rows whose selected attributes are all NULL.
                 // pg_tileserv has no equivalent; the view's WHERE clause is the
@@ -114,7 +142,7 @@ const RULES = [
                 notes.push('include_nulls=0 dropped — express in the view or as a CQL filter if it matters');
             }
             return {
-                url: `/tiles/${schema}.${view}/{z}/{x}/{y}.pbf${qs}`,
+                url: `${TILE_ORIGIN}/tiles/${schema}.${view}/{z}/{x}/{y}.pbf${qs}`,
                 view: { schema, table, geom, view },
                 notes,
             };
@@ -127,7 +155,7 @@ const RULES = [
         match: /^https?:\/\/mapserver\.edugis\.nl\/cgi-bin\/mapserv/i,
         plan(url) {
             const qs = url.split('?')[1] ?? '';
-            return { url: `/legacy/mapserv${qs ? '?' + qs : ''}`, notes: ['via edge bridge; migrate to GeoServer later'] };
+            return { url: `${TILE_ORIGIN}/legacy/mapserv${qs ? '?' + qs : ''}`, notes: ['via edge bridge; migrate to GeoServer later'] };
         },
     },
     {
@@ -147,20 +175,33 @@ const RULES = [
 
 const looksLikeUrl = (s) => /^https?:\/\//i.test(s);
 
+/**
+ * Urls this tool has already rewritten. Without these, --probe after
+ * --write reports 0/0: nothing matches a rewrite rule any more, so there
+ * would be no way to check the result of a migration -- only to plan one.
+ */
+const isMigrated = (u) => MIGRATED.some((m) => m.match.test(u));
+
+const MIGRATED = [
+    { rule: 'pg_tileserv', match: /^(?:https?:\/\/[^/]+)?\/tiles\/[a-z0-9_]+\.[a-z0-9_]+\// },
+    { rule: 'legacy-mapserver', match: /^(?:https?:\/\/[^/]+)?\/legacy\/mapserv/ },
+    { rule: 'hosted-data', match: /^data\// },
+];
+
 /** Every URL-bearing string in the config, with a setter for --write. */
 function urlSites(config) {
     const sites = [];
     const visit = (node) => {
         if (Array.isArray(node)) {
             node.forEach((v, i) => {
-                if (typeof v === 'string' && looksLikeUrl(v)) sites.push({ get: () => node[i], set: (nv) => { node[i] = nv; } });
+                if (typeof v === 'string' && (looksLikeUrl(v) || isMigrated(v))) sites.push({ get: () => node[i], set: (nv) => { node[i] = nv; } });
                 else visit(v);
             });
             return;
         }
         if (!node || typeof node !== 'object') return;
         for (const [k, v] of Object.entries(node)) {
-            if (typeof v === 'string' && ['url', 'data', 'styleUrl', 'tiles'].includes(k) && looksLikeUrl(v)) {
+            if (typeof v === 'string' && ['url', 'data', 'styleUrl', 'tiles'].includes(k) && (looksLikeUrl(v) || isMigrated(v))) {
                 sites.push({ get: () => node[k], set: (nv) => { node[k] = nv; } });
             } else visit(v);
         }
@@ -170,6 +211,9 @@ function urlSites(config) {
 }
 
 function planUrl(url) {
+    for (const m of MIGRATED) {
+        if (m.match.test(url)) return { rule: m.rule, url, already: true };
+    }
     for (const rule of RULES) {
         const m = url.match(rule.match);
         if (!m) continue;
@@ -238,6 +282,7 @@ RETURNS void LANGUAGE plpgsql AS $fn$
 DECLARE
     v_name text := p_table || '${VIEW_SEP}' || p_geom;
     v_cols text;
+    v_srid integer;
 BEGIN
     -- Every non-geometry column, plus the chosen geometry aliased to "geom".
     -- Selecting * would carry the table's OTHER geometry columns into the
@@ -258,9 +303,57 @@ BEGIN
         RAISE EXCEPTION 'no such table: %.%', p_schema, p_table;
     END IF;
 
-    EXECUTE format(
-        'CREATE OR REPLACE VIEW %I.%I AS SELECT %s, %I AS geom FROM %I.%I WHERE %I IS NOT NULL',
-        p_schema, v_name, v_cols, p_geom, p_schema, p_table, p_geom);
+    -- A config may name a geometry column the imported table does not have
+    -- -- the source database has it but the import predates it, or the
+    -- layer has been broken upstream for a while. Skip with a notice
+    -- rather than aborting: one stale reference must not stop the other
+    -- fifty-odd views from being created, and the run has to stay
+    -- re-runnable after the data is fixed.
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_attribute a
+          JOIN pg_class c ON c.oid = a.attrelid
+          JOIN pg_namespace n ON n.oid = c.relnamespace
+         WHERE n.nspname = p_schema AND c.relname = p_table
+           AND a.attname = p_geom AND a.attnum > 0 AND NOT a.attisdropped
+    ) THEN
+        RAISE WARNING 'skipping %.%__%: no geometry column %', p_schema, p_table, p_geom, p_geom;
+        RETURN;
+    END IF;
+
+    -- ST_Force2D because a source with a Z dimension does not fit a 2D
+    -- geometry() type and pg_tileserv answers 500 ("Geometry has Z
+    -- dimension but column does not") for every tile. Nothing is lost:
+    -- MVT is 2D, so the tile pipeline would drop Z anyway. A layer that
+    -- genuinely needs its third dimension is not served this way.
+    --
+    -- Older PostGIS tables carry their SRID in a CHECK constraint rather
+    -- than the column's typmod. A view inherits neither, so geometry_columns
+    -- reports srid 0 for it and pg_tileserv skips the layer entirely --
+    -- silently, since an unpublished layer looks the same as one that was
+    -- never created. Stamping the SRID into the view's column type is what
+    -- makes those tables usable; for typmod-based tables it is a no-op.
+    SELECT srid INTO v_srid FROM geometry_columns
+     WHERE f_table_schema = p_schema AND f_table_name = p_table
+       AND f_geometry_column = p_geom;
+
+    -- CREATE OR REPLACE cannot change a column's type, and re-running this
+    -- after the SRID fix does exactly that (geometry(Point,28992) ->
+    -- geometry(Geometry,28992)). Drop first so the generator stays
+    -- re-runnable; these views hold no data and nothing depends on them
+    -- but the tile server.
+    EXECUTE format('DROP VIEW IF EXISTS %I.%I', p_schema, v_name);
+
+    IF v_srid IS NULL OR v_srid = 0 THEN
+        RAISE WARNING '%.% has no SRID on %; view created but tile servers will skip it',
+            p_schema, p_table, p_geom;
+        EXECUTE format(
+            'CREATE VIEW %I.%I AS SELECT %s, %I AS geom FROM %I.%I WHERE %I IS NOT NULL',
+            p_schema, v_name, v_cols, p_geom, p_schema, p_table, p_geom);
+    ELSE
+        EXECUTE format(
+            'CREATE VIEW %I.%I AS SELECT %s, ST_Force2D(ST_SetSRID(%I, %s))::geometry(Geometry,%s) AS geom FROM %I.%I WHERE %I IS NOT NULL',
+            p_schema, v_name, v_cols, p_geom, v_srid, v_srid, p_schema, p_table, p_geom);
+    END IF;
 
     EXECUTE format(
         'COMMENT ON VIEW %I.%I IS %L',
@@ -302,6 +395,8 @@ const mode = args.includes('--write') ? 'write'
     : args.includes('--probe') ? 'probe' : 'plan';
 const baseArg = args.indexOf('--base');
 const base = baseArg >= 0 ? args[baseArg + 1] : null;
+const originArg = args.indexOf('--tile-origin');
+const TILE_ORIGIN = (originArg >= 0 ? args[originArg + 1] : DEFAULT_TILE_ORIGIN).replace(/\/$/, '');
 
 if (!file) {
     console.error('usage: migrate-services.mjs <config.json> [--plan|--views|--probe --base URL|--write]');
@@ -412,7 +507,10 @@ if (mode === 'plan') {
 
 // --write
 let changed = 0;
-for (const e of planned) for (const site of e.sites) { site.set(e.plan.url); changed++; }
+for (const e of planned) {
+    if (e.plan.already) continue;
+    for (const site of e.sites) { site.set(e.plan.url); changed++; }
+}
 writeFileSync(path, JSON.stringify(config, null, 2) + '\n');
 console.log(`rewrote ${changed} URL(s) across ${planned.length} distinct services in ${file}`);
 console.log(`${blocked.length} URLs left unchanged — no rule yet. Run --plan to see them.`);
