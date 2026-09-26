@@ -3187,11 +3187,6 @@
       "provider": "nominatim",
       "attribution": "&copy; OpenStreetMap contributors | &copy; Nominatim"
     },
-    "sealevel": {
-      "enabled": true,
-      "layer": "coastal-zones",
-      "data": "data/sealevel/lambeck2014-approx.json"
-    },
     "deeptime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
@@ -3449,20 +3444,6 @@
           "enabled": true,
           "title": "Measure",
           "icon": "rulers"
-        },
-        {
-          "id": "compare",
-          "type": "compare",
-          "enabled": true,
-          "title": "Compare",
-          "icon": "layout-split"
-        },
-        {
-          "id": "sealevel",
-          "type": "sealevel",
-          "enabled": true,
-          "title": "Sea level",
-          "icon": "water"
         },
         {
           "type": "spacer",
