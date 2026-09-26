@@ -86,6 +86,11 @@
       "enabled": true,
       "position": "top-right"
     },
+    "fullscreen": {
+      "type": "fullscreen",
+      "enabled": true,
+      "position": "top-right"
+    },
     "scale": {
       "type": "scale",
       "enabled": true,
