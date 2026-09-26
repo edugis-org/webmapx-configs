@@ -916,7 +916,7 @@
         "id": "coastal-zones-source",
         "type": "vector",
         "url": "pmtiles://../data/coastal_zones.pmtiles",
-        "attribution": "GEBCO Compilation Group (2026) GEBCO_2026 Grid"
+        "attribution": "Coastal zones: <a href=\"https://github.com/edugis-org/coastal_zones\" target=\"_blank\" rel=\"noopener\">EduGIS</a>, from <a href=\"https://doi.org/10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa\" target=\"_blank\" rel=\"noopener\">GEBCO_2026 Grid</a>"
       },
       {
         "id": "graticule-source",
