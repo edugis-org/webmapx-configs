@@ -913,6 +913,12 @@
         "attribution": "Merdith et al. 2021 plate model (CC-BY-4.0), reconstructed in the browser"
       },
       {
+        "id": "coastal-zones-source",
+        "type": "vector",
+        "url": "pmtiles://../data/coastal_zones.pmtiles",
+        "attribution": "GEBCO Compilation Group (2026) GEBCO_2026 Grid"
+      },
+      {
         "id": "graticule-source",
         "type": "geojson",
         "data": "internalfunc://graticule?spacing=15",
@@ -2800,6 +2806,34 @@
         }
       },
       {
+        "id": "coastal-zones",
+        "type": "fill",
+        "title": "Coastal zones (today's sea level)",
+        "source": "coastal-zones-source",
+        "source-layer": "zones",
+        "paint": {
+          "fill-color": [
+            "case",
+            ["<=", ["get", "flood_level"], -1], "#aad3df",
+            "rgba(0, 0, 0, 0)"
+          ],
+          "fill-antialias": false
+        },
+        "metadata": {
+          "title": "Coastal zones (today's sea level)",
+          "attributes": {
+            "translations": [
+              {
+                "name": "flood_level",
+                "translation": "Sea level at which the area floods",
+                "unit": " m"
+              }
+            ]
+          },
+          "abstract": "Where the sea reaches at a given sea level, from GEBCO_2026 at 4 arc-minutes. Each area carries flood_level, the sea level at which it connects to the ocean; at sea level L, flood_level <= L is water. Shown at today's level (-1; zone 0 is dry land at sea level): zones above it are transparent, so the basemap shows today's land and lakes. The Sea level tool moves L from -134 m (the lowest sea level of the last glacial maximum, ~21 ka) to +70 m; below today, L < flood_level <= -1 is drawn as land (dry sea floor). Depressions only flood once the sea overtops their lowest saddle: the Black Sea at -28 m (Bosporus), the Caspian at +25 m, the Dead Sea at +58 m. Zone steps are 1 m from -1 to +10 m, 5 m elsewhere."
+        }
+      },
+      {
         "id": "graticule",
         "type": "line",
         "title": "Graticule",
@@ -3153,6 +3187,11 @@
       "provider": "nominatim",
       "attribution": "&copy; OpenStreetMap contributors | &copy; Nominatim"
     },
+    "sealevel": {
+      "enabled": true,
+      "layer": "coastal-zones",
+      "data": "data/sealevel/lambeck2014-approx.json"
+    },
     "deeptime": {
       "enabled": true,
       "data": "data/paleo/merdith2021",
@@ -3286,6 +3325,9 @@
                       "layerId": "paleo-coastlines"
                     },
                     {
+                      "layerId": "coastal-zones"
+                    },
+                    {
                       "layerId": "daynight-computed"
                     },
                     {
@@ -3414,6 +3456,13 @@
           "enabled": true,
           "title": "Compare",
           "icon": "layout-split"
+        },
+        {
+          "id": "sealevel",
+          "type": "sealevel",
+          "enabled": true,
+          "title": "Sea level",
+          "icon": "water"
         },
         {
           "type": "spacer",
