@@ -4043,6 +4043,12 @@
           "type": "compare",
           "enabled": true,
           "title": "Compare"
+        },
+        {
+          "id": "stories",
+          "type": "stories",
+          "enabled": true,
+          "title": "Stories"
         }
       ]
     },
@@ -4106,5 +4112,106 @@
         }
       ]
     }
+  },
+  "stories": {
+    "stories": [
+      {
+        "name": "CasGIS Tour",
+        "description": "",
+        "chapters": [
+          {
+            "id": "chapter-mwi9sxej",
+            "title": "Tour",
+            "buttonText": "Chapter",
+            "steps": [
+              {
+                "title": "Overzicht",
+                "html": "Welkom bij CasGIS, de interactieve kaart van Historische Vereniging Castricum.",
+                "state": {
+                  "layers": [
+                    "esriworldimagery",
+                    "casgis-1832-kaartlaag"
+                  ],
+                  "view": {
+                    "center": [
+                      4.65057,
+                      52.55738
+                    ],
+                    "zoom": 11.91
+                  },
+                  "hiddenLayers": [],
+                  "transparency": {},
+                  "projection": "mercator"
+                }
+              },
+              {
+                "title": "De dorpskern met kerk",
+                "html": "Je bent hier ingezoomd op de dorpskern.\nHet wegenpatroon is nog steeds herkenbaar in de huidige situatie.\nGebruik het oogje om de laag te tonen en te verbergen, of gebruik de doorzichtigheidschuif om langzaam tussen 1832 en nu te wisselen.",
+                "state": {
+                  "layers": [
+                    "esriworldimagery",
+                    "casgis-1832-kaartlaag"
+                  ],
+                  "view": {
+                    "center": [
+                      4.66419,
+                      52.54619
+                    ],
+                    "zoom": 15.61
+                  },
+                  "hiddenLayers": [],
+                  "transparency": {},
+                  "projection": "mercator"
+                }
+              },
+              {
+                "title": "Kadaster 1832",
+                "html": "Gebruik de HISGIS kaartlaag Kadaster 1832 om de Castricum en omgeving te ontdekken in een modern jasje.",
+                "state": {
+                  "layers": [
+                    "esriworldimagery",
+                    "hisgis-kadaster-1832-osm"
+                  ],
+                  "view": {
+                    "center": [
+                      4.62369,
+                      52.54173
+                    ],
+                    "zoom": 14.25
+                  },
+                  "hiddenLayers": [],
+                  "transparency": {},
+                  "projection": "mercator"
+                }
+              },
+              {
+                "title": "Zandafgraving",
+                "html": "Vergelijk de kaarten om de zandafgraving duidelijk te zien.",
+                "state": {
+                  "layers": [
+                    "esriworldimagery",
+                    "casgis-1930-kaartlaag",
+                    "hisgis-tmk-1850",
+                    "ahn4-hillshade"
+                  ],
+                  "view": {
+                    "center": [
+                      4.64607,
+                      52.55131
+                    ],
+                    "zoom": 14.08
+                  },
+                  "hiddenLayers": [],
+                  "transparency": {
+                    "hisgis-tmk-1850": 100
+                  },
+                  "projection": "mercator"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
