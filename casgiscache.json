@@ -206,6 +206,12 @@
         "attribution": "AHN4 &copy; <a href=\"https://www.ahn.nl/\" target=\"copyright\">Het Waterschapshuis</a>"
       },
       {
+        "id": "hisgis-kadastrale-gemeenten-1832-source",
+        "type": "geojson",
+        "data": "data/nederland/grenzen/kadastrale-gemeenten-1832.topojson#kadastrale_gemeenten_1832",
+        "attribution": "Kadastrale gemeenten 1832 via <a href=\"https://hisgis.nl/\" target=\"copyright\">HisGIS</a>"
+      },
+      {
         "id": "hisgis-minuutplans-1832-source",
         "type": "raster",
         "service": "xyz",
@@ -391,6 +397,47 @@
         }
       },
       {
+        "id": "hisgis-kadastrale-gemeenten-1832",
+        "title": "Kadastrale gemeenten 1832",
+        "type": "style",
+        "layers": [
+          {
+            "id": "hisgis-kadastrale-gemeenten-1832-fill",
+            "type": "fill",
+            "source": "hisgis-kadastrale-gemeenten-1832-source",
+            "metadata": {
+              "title": "Kadastrale gemeenten 1832",
+              "attributes": {
+                "translations": [
+                  { "name": "name", "translation": "naam" },
+                  { "name": "provincie", "translation": "provincie" },
+                  { "name": "status", "translation": "status HisGIS" },
+                  { "name": "alt_name", "translation": "andere naam" }
+                ]
+              }
+            },
+            "paint": {
+              "fill-color": "rgba(128, 128, 128, 0)"
+            }
+          },
+          {
+            "id": "hisgis-kadastrale-gemeenten-1832-line",
+            "type": "line",
+            "source": "hisgis-kadastrale-gemeenten-1832-source",
+            "metadata": {
+              "title": "Kadastrale gemeenten 1832"
+            },
+            "paint": {
+              "line-color": "rgba(123, 50, 148, 1)",
+              "line-width": 2
+            }
+          }
+        ],
+        "metadata": {
+          "label": "Kadastrale gemeenten 1832"
+        }
+      },
+      {
         "id": "hisgis-minuutplans-1832",
         "title": "Minuutplans 1832",
         "type": "raster",
@@ -492,6 +539,11 @@
                 {
                   "label": "Kadaster 1832 (OSM stijl)",
                   "layerId": "hisgis-kadaster-1832-osm",
+                  "checked": false
+                },
+                {
+                  "label": "Kadastrale gemeenten 1832",
+                  "layerId": "hisgis-kadastrale-gemeenten-1832",
                   "checked": false
                 },
                 {
