@@ -194,7 +194,7 @@
         "type": "raster",
         "service": "xyz",
         "url": [
-          "https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN4_DTM_50cm/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=jpgpng&f=image&renderingRule=%7B%22rasterFunction%22%3A%22AHN%20-%20Hillshade%20(Multidirectionaal)%22%7D"
+          "https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN4_DTM_50cm/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=jpgpng&f=image&renderingRule=%7B%22rasterFunction%22%3A%22Hillshade%22%2C%22rasterFunctionArguments%22%3A%7B%22Azimuth%22%3A315%2C%22Altitude%22%3A45%2C%22ZFactor%22%3A25%7D%7D"
         ],
         "tileSize": 256,
         "bounds": [
@@ -2247,7 +2247,7 @@
         "type": "raster",
         "source": "ahn4-hillshade-source",
         "metadata": {
-          "swatch": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA+ElEQVR4ARyPPWqFUBCF7533/IuFChISwUIkkEUIabRIkz6Ki0iVLdi4iSwhu5CEFFqlEQRBEhAVsfDn3vuGd2AGhjl8cwYIKs9zN0kSnqbpHsfx5zMqiqKvMAzF1VCW5eswDFRV1TOW7bruO2PMCYLgF7IsM7que7Ms629dV8Y5t2zbfrpHeZ73AEVRfOi6fieEuJ3nGQ+SR5wJ7ulxHADYXiRJEpRSvizLBgCkrmu27zupqoqA4ziHpmkb4k9o0qZpIpjnNI4jaZrmgLZtm77vFTQNiP6XZXlTFEVgFu77/hnw9jdif5AwmaZ5gwFl/ICiEQzDIBcAAAD//wexRykAAAAGSURBVAMAjClxP6YzeggAAAAASUVORK5CYII=",
+          "swatch": "#bdbdbd",
           "label": "AHN Hillshade (Algemeen Hoogtebestand Nederland)"
         }
       },
