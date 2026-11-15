@@ -177,6 +177,55 @@
           52.591307
         ],
         "attribution": "Stichting Oud-Castricum"
+      },
+      {
+        "id": "hisgis-kadaster-1832-osm-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://geoservices.hisgis.nl/wmts/osm1832/{z}/{x}/{y}.png"
+        ],
+        "tileSize": 256,
+        "maxzoom": 17,
+        "attribution": "&copy; <a href=\"https://hisgis.nl/\" target=\"copyright\">HisGIS</a>"
+      },
+      {
+        "id": "ahn4-hillshade-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN4_DTM_50cm/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=jpgpng&f=image&renderingRule=%7B%22rasterFunction%22%3A%22AHN%20-%20Hillshade%20(Multidirectionaal)%22%7D"
+        ],
+        "tileSize": 256,
+        "bounds": [
+          3.2,
+          50.7,
+          7.3,
+          53.7
+        ],
+        "attribution": "AHN4 &copy; <a href=\"https://www.ahn.nl/\" target=\"copyright\">Het Waterschapshuis</a>"
+      },
+      {
+        "id": "hisgis-minuutplans-1832-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://geoservices.hisgis.nl/tiles/minuutplans/{z}/{x}/{y}"
+        ],
+        "tileSize": 256,
+        "minzoom": 13,
+        "maxzoom": 22,
+        "attribution": "Minuutplans 1832 via <a href=\"https://hisgis.nl/\" target=\"copyright\">HisGIS</a>"
+      },
+      {
+        "id": "hisgis-tmk-1850-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://maps.hisgis.nl/topo/maps/tmk/tmk.php?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=scans&STYLES=&FORMAT=image/jpeg&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+        ],
+        "tileSize": 256,
+        "attribution": "Topographische en Militaire Kaart via <a href=\"https://hisgis.nl/\" target=\"copyright\">HisGIS</a>"
       }
     ],
     "layers": [
@@ -320,6 +369,46 @@
           "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=1832%20kaartlaag&query_layers=1832%20kaartlaag",
           "getFeatureInfoFormat": "application/json"
         }
+      },
+      {
+        "id": "hisgis-kadaster-1832-osm",
+        "title": "Kadaster 1832 (OSM stijl)",
+        "type": "raster",
+        "source": "hisgis-kadaster-1832-osm-source",
+        "metadata": {
+          "swatch": "#efebe5",
+          "label": "Kadaster 1832 (OSM stijl)"
+        }
+      },
+      {
+        "id": "ahn4-hillshade",
+        "title": "AHN Hillshade (Algemeen Hoogtebestand Nederland)",
+        "type": "raster",
+        "source": "ahn4-hillshade-source",
+        "metadata": {
+          "swatch": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA+ElEQVR4ARyPPWqFUBCF7533/IuFChISwUIkkEUIabRIkz6Ki0iVLdi4iSwhu5CEFFqlEQRBEhAVsfDn3vuGd2AGhjl8cwYIKs9zN0kSnqbpHsfx5zMqiqKvMAzF1VCW5eswDFRV1TOW7bruO2PMCYLgF7IsM7que7Ms629dV8Y5t2zbfrpHeZ73AEVRfOi6fieEuJ3nGQ+SR5wJ7ulxHADYXiRJEpRSvizLBgCkrmu27zupqoqA4ziHpmkb4k9o0qZpIpjnNI4jaZrmgLZtm77vFTQNiP6XZXlTFEVgFu77/hnw9jdif5AwmaZ5gwFl/ICiEQzDIBcAAAD//wexRykAAAAGSURBVAMAjClxP6YzeggAAAAASUVORK5CYII=",
+          "label": "AHN Hillshade (Algemeen Hoogtebestand Nederland)"
+        }
+      },
+      {
+        "id": "hisgis-minuutplans-1832",
+        "title": "Minuutplans 1832",
+        "type": "raster",
+        "source": "hisgis-minuutplans-1832-source",
+        "metadata": {
+          "swatch": "#b8a78c",
+          "label": "Minuutplans 1832"
+        }
+      },
+      {
+        "id": "hisgis-tmk-1850",
+        "title": "Topographische en Militaire Kaart 1850",
+        "type": "raster",
+        "source": "hisgis-tmk-1850-source",
+        "metadata": {
+          "swatch": "#8f8f8f",
+          "label": "Topographische en Militaire Kaart 1850"
+        }
       }
     ]
   },
@@ -393,6 +482,31 @@
                 {
                   "label": "1832 kaartlaag",
                   "layerId": "casgis-1832-kaartlaag",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "label": "HisGIS",
+              "children": [
+                {
+                  "label": "Kadaster 1832 (OSM stijl)",
+                  "layerId": "hisgis-kadaster-1832-osm",
+                  "checked": false
+                },
+                {
+                  "label": "Minuutplans 1832",
+                  "layerId": "hisgis-minuutplans-1832",
+                  "checked": false
+                },
+                {
+                  "label": "AHN Hillshade (Algemeen Hoogtebestand Nederland)",
+                  "layerId": "ahn4-hillshade",
+                  "checked": false
+                },
+                {
+                  "label": "Topographische en Militaire Kaart 1850",
+                  "layerId": "hisgis-tmk-1850",
                   "checked": false
                 }
               ]
