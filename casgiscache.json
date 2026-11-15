@@ -442,7 +442,10 @@
                   "selectionGroup": "basemap",
                   "checked": false
                 }
-              ]
+              ],
+              "selectionMode": "single",
+              "selectionGroup": "basemap",
+              "allowNone": false
             }
           ]
         },
