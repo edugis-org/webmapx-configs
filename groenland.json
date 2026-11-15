@@ -26,10 +26,11 @@
         "type": "raster",
         "service": "xyz",
         "url": [
-          "https://tile.openweathermap.org/map/temp/{z}/{x}/{y}.png?appid={key-openweathermap}"
+          "https://weathermaps.weatherapi.com/tmp2m/tiles/{utcdatehour}/{z}/{x}/{y}.png"
         ],
         "tileSize": 256,
-        "attribution": "<a href=\"https://openweathermap.org\" target=\"_blank\">OpenWeatherMap</a>"
+        "maxzoom": 6,
+        "attribution": "<a href=\"https://www.weatherapi.com/\" target=\"_blank\">WeatherAPI.com</a>"
       },
       {
         "id": "albedo-zomermeting-source",
@@ -7761,70 +7762,39 @@
         "type": "raster",
         "source": "openweathermaptemperature-new-source",
         "metadata": {
-          "legendurl": "https://openweathermap.org/img/a/TT.png",
-          "getFeatureInfoUrl": "https://api.openweathermap.org/data/2.5/weather?appid={openweathermapkey}&lat={latitude}&lon={longitude}&lang=nl&units=metric",
+          "legendurl": "https://weathermaps.weatherapi.com/img/legend_temp_gradient.png",
           "deniedattributes": [
             "weather-icon"
           ],
+          "getFeatureInfoUrl": "https://api.weatherapi.com/v1/current.json?key={key-weatherapi}&q={latitude},{longitude}&lang=nl",
           "attributes": {
             "translations": [
               {
-                "name": "temp",
+                "name": "location.name",
+                "translation": "locatie"
+              },
+              {
+                "name": "current.temp_c",
                 "translation": "temperatuur",
                 "unit": " °C"
               },
               {
-                "name": "humidity",
-                "translation": "luchtvochtigheid",
-                "unit": " %"
-              },
-              {
-                "name": "feels_like",
+                "name": "current.feelslike_c",
                 "translation": "gevoelstemperatuur",
                 "unit": " °C"
               },
               {
-                "name": "temp_max",
-                "translation": "maximum temperatuur",
-                "unit": " °C"
+                "name": "current.humidity",
+                "translation": "luchtvochtigheid",
+                "unit": " %"
               },
               {
-                "name": "temp_min",
-                "translation": "minimum temperatuur",
-                "unit": " °C"
-              },
-              {
-                "name": "name",
-                "translation": "locatie"
-              },
-              {
-                "name": "wind-speed",
-                "translation": "wind",
-                "unit": " meter/seconde"
-              },
-              {
-                "name": "wind-deg",
-                "translation": "windrichting tov N",
-                "unit": " °"
-              },
-              {
-                "name": "visibility",
-                "translation": "zicht",
-                "unit": " meter"
-              },
-              {
-                "name": "pressure",
-                "translation": "luchtdruk",
-                "unit": " hPa"
-              },
-              {
-                "name": "weather-description",
+                "name": "current.condition.text",
                 "translation": "weer"
               },
               {
-                "name": "rain",
-                "translation": "neerslag",
-                "unit": " mm/uur"
+                "name": "current.last_updated",
+                "translation": "gemeten om (lokale tijd)"
               }
             ]
           },
