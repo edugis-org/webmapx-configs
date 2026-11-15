@@ -10,5 +10,6 @@
   "maptiler": "your-personal-maptiler-key",
   "tomtom": "your-personal-tomtom-key",
   "openrouteservice": "your-personal-openrouteservice-key",
-  "graphhopper": "your-personal-graphhopper-key"
+  "graphhopper": "your-personal-graphhopper-key",
+  "weatherapi": "your-personal-weatherapi-key"
 }
