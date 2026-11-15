@@ -1,0 +1,536 @@
+{
+  "version": 0,
+  "project": {
+    "id": "casgiscache",
+    "title": "CasGIS (cache)",
+    "description": "Converted from an EduGIS map configuration."
+  },
+  "map": {
+    "label": "CasGIS",
+    "center": [
+      4.6488,
+      52.5549
+    ],
+    "zoom": 12,
+    "pitch": 0,
+    "bearing": 0,
+    "type": "maplibre",
+    "style": {
+      "version": 8,
+      "sources": {},
+      "layers": []
+    }
+  },
+  "layerData": {
+    "sources": [
+      {
+        "id": "openstreetmap-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/osm/tiles/osm_EPSG900913/{z}/{x}/{y}.png?origin=nw"
+        ],
+        "tileSize": 256,
+        "maxzoom": 19,
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/about\" target=\"copyright\">OpenStreetMap contributors</a>"
+      },
+      {
+        "id": "openstreetmapgray-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/osm/tiles/osmgrayscale_EPSG900913/{z}/{x}/{y}.png?origin=nw"
+        ],
+        "tileSize": 256,
+        "maxzoom": 19,
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/about\" target=\"copyright\">OpenStreetMap contributors</a>"
+      },
+      {
+        "id": "bingmaproad-source",
+        "type": "raster",
+        "service": "xyz",
+        "tileSize": 256,
+        "url": [
+          "https://ecn.t0.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&mkt=nl-BE&shading=hill",
+          "https://ecn.t1.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&mkt=nl-BE&shading=hill",
+          "https://ecn.t2.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&mkt=nl-BE&shading=hill",
+          "https://ecn.t3.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&mkt=nl-BE&shading=hill"
+        ],
+        "maxzoom": 19,
+        "attribution": "VirtualEarth"
+      },
+      {
+        "id": "esriworldimagery-source",
+        "type": "raster",
+        "service": "xyz",
+        "url": [
+          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        ],
+        "tileSize": 256,
+        "maxzoom": 22,
+        "attribution": "ESRI World Imagery"
+      },
+      {
+        "id": "bingmapaerial-source",
+        "type": "raster",
+        "service": "xyz",
+        "tileSize": 256,
+        "url": [
+          "https://ecn.t0.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+          "https://ecn.t1.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+          "https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+          "https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327"
+        ],
+        "maxzoom": 18,
+        "attribution": "VirtualEarth"
+      },
+      {
+        "id": "bingmaphybrid-source",
+        "type": "raster",
+        "service": "xyz",
+        "tileSize": 256,
+        "url": [
+          "https://ecn.t0.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327&mkt=nl-BE",
+          "https://ecn.t1.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327&mkt=nl-BE",
+          "https://ecn.t2.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327&mkt=nl-BE",
+          "https://ecn.t3.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327&mkt=nl-BE"
+        ],
+        "maxzoom": 18,
+        "attribution": "VirtualEarth"
+      },
+      {
+        "id": "casgis-historische-informatie-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetMap&layers=historische_informatie&SRS=EPSG:3857&transparent=true&format=image/png&BBOX={bbox-epsg-3857}&width=256&height=256&styles="
+        ],
+        "tileSize": 256,
+        "bounds": [
+          4.657237,
+          52.540046,
+          4.681629,
+          52.566193
+        ],
+        "attribution": "Stichting Oud-Castricum"
+      },
+      {
+        "id": "casgis-historische-streetview-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/casgis-simplified5/service?service=WMS&version=1.1.1&request=GetMap&layers=historische_streetview&SRS=EPSG:3857&transparent=true&format=image/png&BBOX={bbox-epsg-3857}&width=256&height=256&styles="
+        ],
+        "tileSize": 256,
+        "bounds": [
+          4.639793,
+          52.540248,
+          4.681139,
+          52.565125
+        ],
+        "attribution": "Stichting Oud-Castricum"
+      },
+      {
+        "id": "casgis-1930-kaartlaag-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/casgis-simplified5/service?service=WMS&version=1.1.1&request=GetMap&layers=1930_kaartlaag&SRS=EPSG:3857&transparent=true&format=image/png&BBOX={bbox-epsg-3857}&width=256&height=256&styles="
+        ],
+        "tileSize": 256,
+        "bounds": [
+          4.59973,
+          52.523621,
+          4.706395,
+          52.589308
+        ],
+        "attribution": "Stichting Oud-Castricum"
+      },
+      {
+        "id": "casgis-1898-kaartlaag-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/casgis-simplified5/service?service=WMS&version=1.1.1&request=GetMap&layers=1898_kaartlaag&SRS=EPSG:3857&transparent=true&format=image/png&BBOX={bbox-epsg-3857}&width=256&height=256&styles="
+        ],
+        "tileSize": 256,
+        "bounds": [
+          4.59973,
+          52.523621,
+          4.706395,
+          52.589308
+        ],
+        "attribution": "Stichting Oud-Castricum"
+      },
+      {
+        "id": "casgis-1832-kaartlaag-source",
+        "type": "raster",
+        "service": "wms",
+        "url": [
+          "https://tiles.edugis.nl/mapproxy/casgis-simplified5/service?service=WMS&version=1.1.1&request=GetMap&layers=1832_kaartlaag&SRS=EPSG:3857&transparent=true&format=image/png&BBOX={bbox-epsg-3857}&width=256&height=256&styles="
+        ],
+        "tileSize": 256,
+        "bounds": [
+          4.598272,
+          52.526088,
+          4.706882,
+          52.591307
+        ],
+        "attribution": "Stichting Oud-Castricum"
+      }
+    ],
+    "layers": [
+      {
+        "id": "openstreetmap",
+        "title": "Standaard (OSM)",
+        "type": "raster",
+        "source": "openstreetmap-source",
+        "metadata": {
+          "swatch": "#dfdfd2",
+          "legendurl": "https://mapserver.edugis.nl/legends/wereld/osm_logo.png",
+          "label": "Standaard (OSM)"
+        }
+      },
+      {
+        "id": "osmbright",
+        "title": "Helder (OSM)",
+        "type": "style",
+        "url": "styles/openmaptiles/osmbright.json",
+        "metadata": {
+          "swatch": "#f8f4f0",
+          "reference": true,
+          "label": "Helder (OSM)",
+          "language": "browser"
+        }
+      },
+      {
+        "id": "openstreetmapgray",
+        "title": "Grijs (OSM)",
+        "type": "raster",
+        "source": "openstreetmapgray-source",
+        "metadata": {
+          "swatch": "#dcdcdc",
+          "legendurl": "https://mapserver.edugis.nl/legends/wereld/osm_logo.png",
+          "label": "Grijs (OSM)"
+        }
+      },
+      {
+        "id": "bingmaproad",
+        "title": "Standaard (VirtualEarth)",
+        "type": "raster",
+        "source": "bingmaproad-source",
+        "metadata": {
+          "swatch": "#dbdbd4",
+          "reference": true,
+          "bing": true,
+          "label": "Standaard (VirtualEarth)"
+        }
+      },
+      {
+        "id": "esriworldimagery",
+        "title": "Wereld (ESRI World Imagery)",
+        "type": "raster",
+        "source": "esriworldimagery-source",
+        "metadata": {
+          "swatch": "#596138",
+          "reference": true,
+          "label": "Wereld (ESRI World Imagery)"
+        }
+      },
+      {
+        "id": "bingmapaerial",
+        "title": "Wereld (VirtualEarth)",
+        "type": "raster",
+        "source": "bingmapaerial-source",
+        "metadata": {
+          "swatch": "#606649",
+          "reference": true,
+          "bing": true,
+          "label": "Wereld (VirtualEarth)"
+        }
+      },
+      {
+        "id": "bingmaphybrid",
+        "title": "Hybride | Wereld (VirtualEarth)",
+        "type": "raster",
+        "source": "bingmaphybrid-source",
+        "metadata": {
+          "swatch": "#6a6c58",
+          "reference": true,
+          "bing": true,
+          "label": "Hybride | Wereld (VirtualEarth)"
+        }
+      },
+      {
+        "id": "casgis-historische-informatie",
+        "title": "historische_informatie",
+        "type": "raster",
+        "source": "casgis-historische-informatie-source",
+        "metadata": {
+          "label": "historische_informatie",
+          "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=historische_informatie&FORMAT=image/png&STYLE=default",
+          "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=historische_informatie&query_layers=historische_informatie",
+          "getFeatureInfoFormat": "application/json"
+        }
+      },
+      {
+        "id": "casgis-historische-streetview",
+        "title": "historische streetview",
+        "type": "raster",
+        "source": "casgis-historische-streetview-source",
+        "metadata": {
+          "label": "historische streetview",
+          "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=historische%20streetview&FORMAT=image/png&STYLE=default",
+          "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=historische%20streetview&query_layers=historische%20streetview",
+          "getFeatureInfoFormat": "application/json"
+        }
+      },
+      {
+        "id": "casgis-1930-kaartlaag",
+        "title": "1930 kaartlaag",
+        "type": "raster",
+        "source": "casgis-1930-kaartlaag-source",
+        "metadata": {
+          "label": "1930 kaartlaag",
+          "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&REQUEST=GETLEGENDGRAPHIC&SERVICE=WMS&VERSION=1.1.1&LAYER=1930+kaartlaag&FORMAT=image%2Fpng&STYLE=",
+          "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=1930%20kaartlaag&query_layers=1930%20kaartlaag",
+          "getFeatureInfoFormat": "application/json"
+        }
+      },
+      {
+        "id": "casgis-1898-kaartlaag",
+        "title": "1898 kaartlaag",
+        "type": "raster",
+        "source": "casgis-1898-kaartlaag-source",
+        "metadata": {
+          "label": "1898 kaartlaag",
+          "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&REQUEST=GETLEGENDGRAPHIC&SERVICE=WMS&VERSION=1.1.1&LAYER=1898+kaartlaag&FORMAT=image%2Fpng&STYLE=",
+          "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=1898%20kaartlaag&query_layers=1898%20kaartlaag",
+          "getFeatureInfoFormat": "application/json"
+        }
+      },
+      {
+        "id": "casgis-1832-kaartlaag",
+        "title": "1832 kaartlaag",
+        "type": "raster",
+        "source": "casgis-1832-kaartlaag-source",
+        "metadata": {
+          "label": "1832 kaartlaag",
+          "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&REQUEST=GETLEGENDGRAPHIC&SERVICE=WMS&VERSION=1.1.1&LAYER=1832+kaartlaag&FORMAT=image%2Fpng&STYLE=",
+          "getFeatureInfoUrl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Fcasgis%2Ffiles%2Fcasgis%2Fcasgis-simplified5.qgz&service=WMS&version=1.1.1&request=GetFeatureInfo&layers=1832%20kaartlaag&query_layers=1832%20kaartlaag",
+          "getFeatureInfoFormat": "application/json"
+        }
+      }
+    ]
+  },
+  "state": {
+    "activeBackground": "openstreetmapgray",
+    "activeLayers": [
+      {
+        "ref": "openstreetmapgray",
+        "visible": true
+      }
+    ],
+    "activeExclusiveLayers": {
+      "basemap": "openstreetmapgray"
+    }
+  },
+  "tools": {
+    "mainToolbar": {
+      "type": "toolbar",
+      "enabled": true,
+      "position": "top-left",
+      "orientation": "vertical",
+      "panel": {
+        "enabled": true,
+        "position": "after"
+      },
+      "items": [
+        {
+          "id": "search",
+          "type": "search",
+          "enabled": true,
+          "title": "Search",
+          "provider": "nominatim",
+          "attribution": "&copy; OpenStreetMap contributors | &copy; Nominatim"
+        },
+        {
+          "id": "layers",
+          "type": "layerTree",
+          "enabled": true,
+          "title": "Catalog",
+          "tree": [
+            {
+              "label": "Stichting Oud-Castricum",
+              "expanded": true,
+              "children": [
+                {
+                  "label": "historische informatie",
+                  "expanded": true,
+                  "children": [
+                    {
+                      "label": "historische_informatie",
+                      "layerId": "casgis-historische-informatie",
+                      "checked": false
+                    },
+                    {
+                      "label": "historische streetview",
+                      "layerId": "casgis-historische-streetview",
+                      "checked": false
+                    }
+                  ]
+                },
+                {
+                  "label": "1930 kaartlaag",
+                  "layerId": "casgis-1930-kaartlaag",
+                  "checked": false
+                },
+                {
+                  "label": "1898 kaartlaag",
+                  "layerId": "casgis-1898-kaartlaag",
+                  "checked": false
+                },
+                {
+                  "label": "1832 kaartlaag",
+                  "layerId": "casgis-1832-kaartlaag",
+                  "checked": false
+                }
+              ]
+            },
+            {
+              "label": "Achtergrondlagen",
+              "children": [
+                {
+                  "label": "Grijs (OSM)",
+                  "layerId": "openstreetmapgray",
+                  "selectionGroup": "basemap",
+                  "checked": true
+                },
+                {
+                  "label": "Standaard (OSM)",
+                  "layerId": "openstreetmap",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                },
+                {
+                  "label": "Helder (OSM)",
+                  "layerId": "osmbright",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                },
+                {
+                  "label": "Topografisch (Bing)",
+                  "layerId": "bingmaproad",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                },
+                {
+                  "label": "Satelliet (Bing)",
+                  "layerId": "bingmapaerial",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                },
+                {
+                  "label": "Combinatie (Bing)",
+                  "layerId": "bingmaphybrid",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                },
+                {
+                  "label": "Satelliet (ESRI)",
+                  "layerId": "esriworldimagery",
+                  "selectionGroup": "basemap",
+                  "checked": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "measure",
+          "type": "measure",
+          "enabled": true,
+          "title": "Measure"
+        },
+        {
+          "id": "info",
+          "type": "info",
+          "enabled": true,
+          "title": "Feature info"
+        },
+        {
+          "id": "3d",
+          "type": "3d",
+          "enabled": true,
+          "title": "3D"
+        },
+        {
+          "id": "geolocation",
+          "type": "geolocation",
+          "enabled": true,
+          "title": "Geolocation"
+        },
+        {
+          "id": "draw",
+          "type": "draw",
+          "enabled": true,
+          "title": "Draw"
+        }
+      ]
+    },
+    "attribution": {
+      "type": "attributionControl",
+      "enabled": true,
+      "position": "edge-bottom-right"
+    },
+    "coordinates": {
+      "type": "coordinates",
+      "enabled": true,
+      "position": "bottom-center"
+    },
+    "navigation": {
+      "type": "navigation",
+      "enabled": true,
+      "position": "bottom-left",
+      "direction": "vertical",
+      "orientation": "vertical"
+    },
+    "scale": {
+      "type": "scaleControl",
+      "enabled": true,
+      "position": "bottom-right",
+      "maxWidth": 140,
+      "margin": "0 0 5px 0"
+    },
+    "zoomLevel": {
+      "type": "zoomLevel",
+      "enabled": true,
+      "position": "bottom-left"
+    },
+    "spinner": {
+      "type": "spinner",
+      "enabled": true,
+      "position": "middle-center"
+    },
+    "legendToolbar": {
+      "type": "toolbar",
+      "enabled": true,
+      "position": "top-right",
+      "orientation": "vertical",
+      "tooltipPlacement": "left",
+      "panel": {
+        "enabled": true,
+        "position": "after",
+        "opened": true
+      },
+      "items": [
+        {
+          "id": "legend",
+          "type": "layerOverview",
+          "enabled": true,
+          "title": "Legend"
+        }
+      ]
+    }
+  }
+}
