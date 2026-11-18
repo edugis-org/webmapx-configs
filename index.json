@@ -1,0 +1,19 @@
+{
+  "description": "What the setup page offers in its Open menu and gallery, in this order. Edit titles, descriptions and order by hand; run npm run configs:index (in webmapx) to add new configs, drop removed ones and refresh thumbnails. exclude: configs in the repository that are deliberately not offered.",
+  "exclude": ["config-laptop.json", "webmapx-config.json", "demo-nl.json", "nl-migrated.json", "sample-project-draft.json", "deeptime.json"],
+  "configs": [
+    { "file": "demo.json", "title": "Demo", "description": "Every tool, with world and Dutch layers", "thumbnail": "thumbnails/demo.webp", "thumbnailOf": "5c85b82226b0" },
+    { "file": "nl.json", "title": "Nederland", "description": "Dutch layer catalog (PDOK and others)", "thumbnail": "thumbnails/nl.webp", "thumbnailOf": "2353d7d59b72" },
+    { "file": "world.json", "title": "World", "description": "World layers", "thumbnail": "thumbnails/world.webp", "thumbnailOf": "a677590291e0" },
+    { "file": "historisch.json", "title": "Historisch", "description": "Historical maps of the Netherlands", "thumbnail": "thumbnails/historisch.webp", "thumbnailOf": "301d09bde6fc" },
+    { "file": "casgis.json", "title": "CasGIS", "description": "", "thumbnail": "thumbnails/casgis.webp", "thumbnailOf": "82c7a7f20549" },
+    { "file": "casgiscache.json", "title": "CasGIS (cached)", "description": "CasGIS with cached layers and the CasGIS Tour story", "thumbnail": "thumbnails/casgiscache.webp", "thumbnailOf": "25fdc7fda538" },
+    { "file": "itcz.json", "title": "ITCZ through the year", "description": "", "thumbnail": "thumbnails/itcz.webp", "thumbnailOf": "06a6df1a2d8d" },
+    { "file": "tijdzones.json", "title": "Tijdzones", "description": "Time zones", "thumbnail": "thumbnails/tijdzones.webp", "thumbnailOf": "11ec0b1f5db9" },
+    { "file": "groenland.json", "title": "Groenland", "description": "", "thumbnail": "thumbnails/groenland.webp", "thumbnailOf": "fd07f55784ef" },
+    { "file": "belgie.json", "title": "België", "description": "", "thumbnail": "thumbnails/belgie.webp", "thumbnailOf": "7b5de5286f27" },
+    { "file": "demo-mlgl-globe.json", "title": "Globe (MapLibre)", "description": "", "thumbnail": "thumbnails/demo-mlgl-globe.webp", "thumbnailOf": "3d4d17d1b8f1" },
+    { "file": "demo-mlgl-terrain.json", "title": "Terrain (MapLibre)", "description": "", "thumbnail": "thumbnails/demo-mlgl-terrain.webp", "thumbnailOf": "89cc02958450" },
+    { "file": "demo-ol-chorepleth.json", "title": "Choropleth (OpenLayers)", "description": "", "thumbnail": "thumbnails/demo-ol-chorepleth.webp", "thumbnailOf": "b7e1c5387bdc" }
+  ]
+}
