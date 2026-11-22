@@ -16,7 +16,8 @@
     "style": {
       "version": 8,
       "sources": {},
-      "layers": []
+      "layers": [],
+      "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf"
     }
   },
   "layerData": {
@@ -59,6 +60,40 @@
             "type": "geojson",
             "data": "https://kaart.edugis.nl/data/caribbean/amerika_vn.geo.json",
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Noord-Amerika (VN)"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -88,
+                      33
+                    ]
+                  }
+                },
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Zuid-Amerika (VN)"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -60,
+                      -5
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -77,10 +112,31 @@
                 "rgba(213,62,79,1)",
                 "Zuid-Amerika (VN)",
                 "rgba(255, 193, 7, 1)",
-                "#000000"
+                "rgba(0,0,0,0)"
               ],
               "fill-opacity": 0.5,
               "fill-outline-color": "#444"
+            }
+          },
+          {
+            "id": "b2e7a17c-673c-4522-a6da-15ea3fbabaef-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -119,6 +175,27 @@
             "type": "geojson",
             "data": "https://kaart.edugis.nl/data/caribbean/middenamerikaun.geo.json",
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Midden-Amerika (VN)"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -102.4889,
+                      18.814
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -130,6 +207,27 @@
               "fill-color": "rgba(234.423,230.612,68.682,1)",
               "fill-outline-color": "rgba(234.423,230.612,68.682,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "40b82790-3ef6-40cc-a0ec-d9cee283a58e-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -168,6 +266,27 @@
             "type": "geojson",
             "data": "https://kaart.edugis.nl/data/caribbean/caribischgebiedvn.geo.json",
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Caribisch gebied (VN)"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -72.3404,
+                      18.2867
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -179,6 +298,27 @@
               "fill-color": "rgba(181.226,139.137,220.301,1)",
               "fill-outline-color": "rgba(181.226,139.137,220.301,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "93ff4382-9e5f-4c56-98b6-d38c0d7414f2-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -217,6 +357,27 @@
             "type": "geojson",
             "data": "https://kaart.edugis.nl/data/caribbean/Grote_Antillen.geo.json",
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Grote Antillen"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -76.323,
+                      20.0987
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -228,6 +389,27 @@
               "fill-color": "rgba(121.684,208.196,71.91,1)",
               "fill-outline-color": "rgba(148.315,210.214,92.706,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "11c27a72-d5e9-4498-a2bf-47e9c4e918f5-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -521,6 +703,27 @@
               ]
             },
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Kleine Antillen"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -60.8233,
+                      12.6809
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -532,6 +735,27 @@
               "fill-color": "rgba(45.361,150.364,173.093,1)",
               "fill-outline-color": "rgba(45.361,150.364,173.093,1)",
               "fill-opacity": 0.85
+            }
+          },
+          {
+            "id": "40c7e3d6-0c81-40c5-a5eb-2a59791f34b3-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -556,7 +780,6 @@
             }
           ],
           "visible": true,
-          "transparency": 15.444403754340277,
           "userlayer": true,
           "cansave": true,
           "label": "Kleine Antillen"
@@ -750,6 +973,27 @@
               ]
             },
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Bovenwindse eilanden"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -61.5624,
+                      14.8402
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -761,6 +1005,27 @@
               "fill-color": "rgba(190.04,60.846,142.586,1)",
               "fill-outline-color": "rgba(190.04,60.846,142.586,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "ecd27beb-5463-4142-b6d0-ba1a381d3e89-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -966,6 +1231,27 @@
               ]
             },
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "Benedenwindse eilanden"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -66.0049,
+                      11.6975
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -977,6 +1263,27 @@
               "fill-color": "rgba(255,193,7,1)",
               "fill-outline-color": "rgba(255,193,7,1)",
               "fill-opacity": 0.48
+            }
+          },
+          {
+            "id": "8dc3b99e-1be6-4757-adc5-2da44fca22ef-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -1001,7 +1308,6 @@
             }
           ],
           "visible": true,
-          "transparency": 52.416653103298614,
           "userlayer": true,
           "cansave": true,
           "label": "Benedenwindse eilanden"
@@ -1107,6 +1413,27 @@
               ]
             },
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "ABC-eilanden"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -69.0871,
+                      12.3256
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -1118,6 +1445,27 @@
               "fill-color": "rgba(33,139,69,1)",
               "fill-outline-color": "rgba(33,139,69,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "a3941e4d-9cf6-4bb8-8f54-d6d974f004cc-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -1291,6 +1639,27 @@
               ]
             },
             "attribution": "EduGIS"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": [
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "label": "SSS-eilanden"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                      -63.1468,
+                      17.7111
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "layers": [
@@ -1302,6 +1671,27 @@
               "fill-color": "rgba(255,255,255,1)",
               "fill-outline-color": "rgba(255,255,255,1)",
               "fill-opacity": 0.7
+            }
+          },
+          {
+            "id": "49e4c94c-5f1b-45e1-aad4-da2cea57a618-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "label"
+              ],
+              "text-font": [
+                "Noto Sans Bold"
+              ],
+              "text-size": 14,
+              "text-max-width": 8
+            },
+            "paint": {
+              "text-color": "#ffffff",
+              "text-halo-color": "rgba(0, 0, 0, 0.85)",
+              "text-halo-width": 1.5
             }
           }
         ],
@@ -1339,6 +1729,10 @@
           "source": {
             "type": "geojson",
             "data": "https://kaart.edugis.nl/data/caribbean/landen.geo.json"
+          },
+          "labels": {
+            "type": "geojson",
+            "data": "https://kaart.edugis.nl/data/caribbean/landpunten.geo.json"
           }
         },
         "layers": [
@@ -1443,8 +1837,36 @@
                 "#FFAE00",
                 "#444"
               ],
-              "fill-opacity": 1,
+              "fill-opacity": 0.6,
               "fill-outline-color": "#444"
+            },
+            "metadata": {
+              "title": "Landen"
+            }
+          },
+          {
+            "id": "ca13ea98-ede8-404d-a16a-0a2a412f3f76-label",
+            "type": "symbol",
+            "source": "labels",
+            "layout": {
+              "text-field": [
+                "get",
+                "COUNTRY"
+              ],
+              "text-size": 18,
+              "text-letter-spacing": 0.08,
+              "text-font": [
+                "Noto Sans Regular"
+              ]
+            },
+            "paint": {
+              "text-color": "rgba(78, 214, 124, 1)",
+              "text-halo-color": "black",
+              "text-halo-width": 0.7,
+              "text-halo-blur": 0
+            },
+            "metadata": {
+              "title": "Landnamen"
             }
           }
         ],
@@ -1457,42 +1879,9 @@
               "type": "number"
             }
           ],
-          "transparency": 40,
           "userlayer": true,
           "cansave": true,
-          "label": "Landen"
-        }
-      },
-      {
-        "id": "landnamen",
-        "title": "Landnamen",
-        "type": "style",
-        "sources": {
-          "source": {
-            "type": "geojson",
-            "data": "https://kaart.edugis.nl/data/caribbean/landpunten.geo.json"
-          }
-        },
-        "layers": [
-          {
-            "id": "landnamen-layer",
-            "type": "symbol",
-            "source": "source",
-            "paint": {
-              "text-color": "rgba(78, 214, 124, 1)",
-              "text-halo-color": "black",
-              "text-halo-width": 0.7,
-              "text-halo-blur": 0
-            },
-            "layout": {
-              "text-field": "{COUNTRY}",
-              "text-size": 18,
-              "text-letter-spacing": 0.08
-            }
-          }
-        ],
-        "metadata": {
-          "title": "Landnamen",
+          "label": "Landen",
           "attributes": {
             "translations": [
               {
@@ -1500,11 +1889,7 @@
                 "translation": "Land"
               }
             ]
-          },
-          "transparency": 0,
-          "userlayer": true,
-          "cansave": true,
-          "label": "Landnamen"
+          }
         }
       },
       {
@@ -3363,31 +3748,27 @@
                 {
                   "label": "Landen",
                   "layerId": "ca13ea98-ede8-404d-a16a-0a2a412f3f76"
+                }
+              ]
+            },
+            {
+              "label": "Caribisch deel van het Koninkrijk",
+              "children": [
+                {
+                  "label": "Zones in zee bij Aruba",
+                  "layerId": "b2e21dcb-e7a8-4d0c-7199-3b04e81122221"
                 },
                 {
-                  "label": "Landnamen",
-                  "layerId": "landnamen"
+                  "label": "Zones in zee bij Curacao",
+                  "layerId": "b2e21dcb-e7a8-4d0c-7299-3b04e81122221"
                 },
                 {
-                  "label": "Caribisch deel van het Koninkrijk",
-                  "children": [
-                    {
-                      "label": "Zones in zee bij Aruba",
-                      "layerId": "b2e21dcb-e7a8-4d0c-7199-3b04e81122221"
-                    },
-                    {
-                      "label": "Zones in zee bij Curacao",
-                      "layerId": "b2e21dcb-e7a8-4d0c-7299-3b04e81122221"
-                    },
-                    {
-                      "label": "Zones in zee bij Sint Maarten",
-                      "layerId": "b2e21dcb-e7a8-4d0c-7399-3b04e81122221"
-                    },
-                    {
-                      "label": "Zones in zee bij Caribisch Nederland",
-                      "layerId": "b2e21dcb-e7a8-4d0c-7599-3b04e81122221"
-                    }
-                  ]
+                  "label": "Zones in zee bij Sint Maarten",
+                  "layerId": "b2e21dcb-e7a8-4d0c-7399-3b04e81122221"
+                },
+                {
+                  "label": "Zones in zee bij Caribisch Nederland",
+                  "layerId": "b2e21dcb-e7a8-4d0c-7599-3b04e81122221"
                 }
               ]
             },
