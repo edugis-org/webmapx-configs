@@ -87,6 +87,10 @@
       "type": "3d",
       "enabled": true
     },
+    "measure": {
+      "type": "measure",
+      "enabled": true
+    },
     "layerOverview": {
       "type": "layerOverview",
       "enabled": true
@@ -100,6 +104,11 @@
         {
           "type": "3d",
           "id": "3d",
+          "enabled": true
+        },
+        {
+          "type": "measure",
+          "id": "measure",
           "enabled": true
         },
         {
