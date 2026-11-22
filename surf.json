@@ -172,6 +172,7 @@
         "type": "raster",
         "source": "esriworldimagery-source",
         "metadata": {
+          "swatch": "#596138",
           "reference": true,
           "title": "Wereld (ESRI World Imagery)",
           "userlayer": true,
@@ -196,6 +197,7 @@
         "type": "raster",
         "source": "bingmapaerial-source",
         "metadata": {
+          "swatch": "#606649",
           "reference": true,
           "bing": true,
           "title": "Wereld (Bing)",
@@ -209,6 +211,7 @@
         "type": "raster",
         "source": "openstreetmap-source",
         "metadata": {
+          "swatch": "#dfdfd2",
           "legendurl": "https://mapserver.edugis.nl/legends/wereld/osm_logo.png",
           "title": "Standaard (OSM)",
           "reference": true,
@@ -221,6 +224,7 @@
         "type": "raster",
         "source": "openstreetmapgray-source",
         "metadata": {
+          "swatch": "#dcdcdc",
           "legendurl": "https://mapserver.edugis.nl/legends/wereld/osm_logo.png",
           "title": "Grijs (OSM)",
           "reference": true,
@@ -233,6 +237,7 @@
         "type": "style",
         "url": "https://kaart.edugis.nl/v2/styles/openmaptiles/osmbright.json",
         "metadata": {
+          "swatch": "#f8f4f0",
           "reference": true,
           "title": "Helder (OSM)",
           "styleid": "OsmBright",
@@ -246,6 +251,7 @@
         "type": "raster",
         "source": "bingmaproad-source",
         "metadata": {
+          "swatch": "#dbdbd4",
           "reference": true,
           "bing": true,
           "title": "Standaard (Bing)",
@@ -259,6 +265,7 @@
         "type": "raster",
         "source": "bingmaphybrid-source",
         "metadata": {
+          "swatch": "#6a6c58",
           "reference": true,
           "bing": true,
           "title": "Bing | Combinatie",
@@ -272,6 +279,7 @@
         "type": "raster",
         "source": "c132ac7b-547f-4ead-b5f5-9068d63e01d0-source",
         "metadata": {
+          "swatch": "#d1b11b",
           "wmts": true,
           "title": "Bathymetrie Europa",
           "abstract": "Bathymetrie Europa",
@@ -284,6 +292,7 @@
         "type": "raster",
         "source": "3bc796a2-c8d7-4376-b18d-27ff61c59958-source",
         "metadata": {
+          "swatch": "#a0be8d",
           "wms": true,
           "title": "Bathymetrie Wereld",
           "abstract": "Bathymetrie Wereld",
@@ -299,6 +308,7 @@
         "minzoom": 2,
         "maxzoom": 5,
         "metadata": {
+          "swatch": "#fefbfa",
           "title": "Oceaanstromingen",
           "legendurl": "https://map.edugis.nl/cgi-bin/qgis_mapserv.fcgi?MAP=data%2Feduqgis%2Ffiles%2Fsurf%2Fcurrents4.qgz&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&LAYER=Currents&FORMAT=image/png&STYLE=standaard",
           "abstract": "",

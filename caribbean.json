@@ -2103,6 +2103,7 @@
           }
         ],
         "metadata": {
+          "swatch": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%23eaf0f5%22%2F%3E%3Cpath%20d%3D%22M0%2014%206%205.5%2010%2014Z%22%20fill%3D%22%23b6c2cd%22%2F%3E%3Cpath%20d%3D%22M6%205.5%208%209.5%204%209.5Z%22%20fill%3D%22%23fbfdff%22%2F%3E%3Cpath%20d%3D%22M7%2014%2011.5%207%2016%2014Z%22%20fill%3D%22%238b98a5%22%2F%3E%3Cpath%20d%3D%22M11.5%207%2013.2%209.7%209.8%209.7Z%22%20fill%3D%22%23fbfdff%22%2F%3E%3C%2Fsvg%3E",
           "abstract": "Deze kaartlaag geeft met schaduw een 3D-effect aan de kaartlagen.",
           "opacity": 80,
           "title": "Reliefschaduw (2D)",
@@ -3548,6 +3549,7 @@
         "type": "raster",
         "source": "568124712847-984618471-source",
         "metadata": {
+          "swatch": "#d2c3a9",
           "title": "Pascaert van de Carybes - 1650",
           "abstract": "Op deze oude kaart uit 1650 zie je in het zuiden het Caribisch gebied liggen. De kaart laat zien dat de Nederlanders hier in die tijd actief waren en nieuwe eilanden toeeigenden. Ook de kusten van Zuid-Amerika zijn goed zichtbaar. Je kunt de mondingen van grote rivieren, zoals de Amazone en de Orinoco, zien. Je ziet ook Noordoost-Brazilie, het was een belangrijk gebied tijdens de Nederlandse overheersing. De kaart werd gemaakt door Anthonie Jacobsz Theunisz in Amsterdam.",
           "attribution": "-",
@@ -3566,6 +3568,7 @@
         "type": "raster",
         "source": "15388750-65239347-source",
         "metadata": {
+          "swatch": "#ffffff",
           "title": "Pascaerte van West Indien",
           "abstract": "De Pascaerte van West Indien is een historische zeekaart die het gebied van de Caribische Zee tot aan de Golf van Mexico bestrijkt. Deze kaart werd gemaakt door Theunis Jacobsz en dateert uit 1654. Het is een prachtig versierde en belangrijke zeekaart die Florida, de Golfkust, het Caribisch gebied, Midden-Amerika en het gebied ten zuiden van de monding van de Delaware-rivier toont. De kaart diende als een prototype voor latere Nederlandse en Engelse zeekaarten van dit gebied en werd gekopieerd door cartografen uit de Gouden Eeuw.",
           "attribution": "-",
@@ -3582,67 +3585,100 @@
         "id": "administratieve-grenzen",
         "title": "Administratieve grenzen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightadminborders.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightadminborders.json",
+        "metadata": {
+          "swatch": "#9e9cab"
+        }
       },
       {
         "id": "gebouwen",
         "title": "Gebouwen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightbuildings.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightbuildings.json",
+        "metadata": {
+          "swatch": "#D2B69A"
+        }
       },
       {
         "id": "plaatsen",
         "title": "Plaatsen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightpoi.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightpoi.json",
+        "metadata": {
+          "swatch": "black"
+        }
       },
       {
         "id": "plaatsnamen",
         "title": "Plaatsnamen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightpoiname.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightpoiname.json",
+        "metadata": {
+          "swatch": "#666"
+        }
       },
       {
         "id": "snelwegen",
         "title": "Snelwegen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightroads.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightroads.json",
+        "metadata": {
+          "swatch": "#ffdaa6"
+        }
       },
       {
         "id": "snelwegnamen",
         "title": "Snelwegnamen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/brightmotorwayname.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/brightmotorwayname.json",
+        "metadata": {
+          "swatch": "rgba(0, 0, 0, 1)"
+        }
       },
       {
         "id": "spoorwegen",
         "title": "Spoorwegen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightrail.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightrail.json",
+        "metadata": {
+          "swatch": "#bbb"
+        }
       },
       {
         "id": "water-en-waterwegen",
         "title": "Water en waterwegen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightwater.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightwater.json",
+        "metadata": {
+          "swatch": "#a0c8f0"
+        }
       },
       {
         "id": "waternamen",
         "title": "Waternamen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightwatername.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightwatername.json",
+        "metadata": {
+          "swatch": "#74aee9"
+        }
       },
       {
         "id": "wegen",
         "title": "Wegen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightallroads.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightallroads.json",
+        "metadata": {
+          "swatch": "hsla(0, 0%, 89%, 0.56)"
+        }
       },
       {
         "id": "wegnamen",
         "title": "Wegnamen",
         "type": "style",
-        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightallroadnames.json"
+        "url": "https://kaart.edugis.nl/v2/maps/layers/osmbrightallroadnames.json",
+        "metadata": {
+          "swatch": "hsl(30, 23%, 62%)"
+        }
       },
       {
         "id": "esriworldimagery",
@@ -3650,6 +3686,7 @@
         "type": "raster",
         "source": "esriworldimagery-source",
         "metadata": {
+          "swatch": "#596138",
           "reference": true,
           "title": "ESRI | Satelliet",
           "userlayer": true,
