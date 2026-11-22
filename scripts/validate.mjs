@@ -33,7 +33,7 @@ if (!existsSync(validator)) {
 const entries = await readdir(configsDir, { withFileTypes: true });
 // The repository is flat so that it can be served as-is at public/config —
 // which means package.json and the apikeys template sit beside the configs.
-const NOT_A_CONFIG = new Set(['package.json', 'package-lock.json', 'apikeys.json', 'apikeys.example.json', 'configs.lock']);
+const NOT_A_CONFIG = new Set(['package.json', 'package-lock.json', 'apikeys.json', 'apikeys.example.json', 'configs.lock', 'index.json']);
 
 const configs = entries
   .filter((entry) => entry.isFile() && entry.name.endsWith('.json') && !NOT_A_CONFIG.has(entry.name))
