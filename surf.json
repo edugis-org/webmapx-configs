@@ -314,7 +314,7 @@
         "source": "openweathermaptemperature-new-source",
         "metadata": {
           "legendurl": "https://openweathermap.org/img/a/TT.png",
-          "getFeatureInfoUrl": "https://api.openweathermap.org/data/2.5/weather?appid={openweathermapkey}&lat={latitude}&lon={longitude}&lang=nl&units=metric",
+          "getFeatureInfoUrl": "https://api.openweathermap.org/data/2.5/weather?appid={key-openweathermap}&lat={latitude}&lon={longitude}&lang=nl&units=metric",
           "deniedattributes": [
             "weather-icon"
           ],
@@ -393,7 +393,7 @@
         "metadata": {
           "legendurl": "",
           "timeinterval": 300000,
-          "getFeatureInfoUrl": "https://api.openweathermap.org/data/2.5/weather?appid={openweathermapkey}&lat={latitude}&lon={longitude}&lang=nl&units=metric",
+          "getFeatureInfoUrl": "https://api.openweathermap.org/data/2.5/weather?appid={key-openweathermap}&lat={latitude}&lon={longitude}&lang=nl&units=metric",
           "deniedattributes": [
             "weather-icon"
           ],
