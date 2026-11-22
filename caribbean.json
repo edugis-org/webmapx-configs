@@ -2068,7 +2068,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/h7bbe9abesz5rgw/Faults.json?dl=0",
+            "data": "data/caribbean/Faults.json",
             "attribution": "unknown"
           }
         },
@@ -2097,7 +2097,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/tmuj4hs6x6facfn/plaatgrenzen.json?dl=0",
+            "data": "data/caribbean/plaatgrenzen.json",
             "attribution": "unknown"
           }
         },
@@ -2126,7 +2126,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/oqd9vf6f7hmqf8a/platen.json?dl=0",
+            "data": "data/caribbean/platen.json",
             "attribution": "unknown"
           }
         },
@@ -2267,7 +2267,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/w6c4mnp3hwmmpax/OceanAgeDrop.json?dl=0",
+            "data": "data/caribbean/OceanAgeDrop.json",
             "attribution": "unknown"
           }
         },
@@ -2329,7 +2329,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/3mhg0wfad027pat/vulkanen.geojson?dl=0",
+            "data": "data/caribbean/vulkanen.geojson",
             "attribution": "unknown"
           }
         },
@@ -2410,7 +2410,7 @@
         "sources": {
           "source": {
             "type": "geojson",
-            "data": "https://dl.dropbox.com/s/hsjd10bpxx9id22/Troggen-Bekkensdata.json?dl=0",
+            "data": "data/caribbean/Troggen-Bekkensdata.json",
             "attribution": "unknown"
           }
         },
