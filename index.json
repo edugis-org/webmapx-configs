@@ -12,6 +12,8 @@
     { "file": "belgie.json", "title": "België", "description": "A nice atlas showing different themed maps of Belgium", "thumbnail": "thumbnails/belgie.webp", "thumbnailOf": "7b5de5286f27" },
     { "file": "demo-mlgl-globe.json", "title": "Globe (MapLibre)", "description": "", "thumbnail": "thumbnails/demo-mlgl-globe.webp", "thumbnailOf": "3d4d17d1b8f1" },
     { "file": "demo-mlgl-terrain.json", "title": "Terrain (MapLibre)", "description": "", "thumbnail": "thumbnails/demo-mlgl-terrain.webp", "thumbnailOf": "89cc02958450" },
-    { "file": "demo-ol-chorepleth.json", "title": "Choropleth (OpenLayers)", "description": "", "thumbnail": "thumbnails/demo-ol-chorepleth.webp", "thumbnailOf": "b7e1c5387bdc" }
+    { "file": "demo-ol-chorepleth.json", "title": "Choropleth (OpenLayers)", "description": "", "thumbnail": "thumbnails/demo-ol-chorepleth.webp", "thumbnailOf": "b7e1c5387bdc" },
+    { "file": "caribbean.json", "title": "Caribisch gebied", "description": "Regions, countries, tectonics and economy of the Caribbean", "thumbnail": "thumbnails/caribbean.webp", "thumbnailOf": "e3235f19a3fa" },
+    { "file": "surf.json", "title": "Surfen", "description": "Surf spots, coast types, bathymetry and weather", "thumbnail": "thumbnails/surf.webp", "thumbnailOf": "068bd6351a4b" }
   ]
 }

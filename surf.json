@@ -3,7 +3,7 @@
   "project": {
     "id": "surfen",
     "title": "Surfen",
-    "description": "Converted from an EduGIS map configuration."
+    "description": "Surf spots, coast types, bathymetry and weather"
   },
   "map": {
     "label": "Surfen",

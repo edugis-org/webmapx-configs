@@ -2,11 +2,11 @@
   "version": 0,
   "project": {
     "id": "caribbean",
-    "title": "caribbean",
-    "description": "Converted from an EduGIS map configuration."
+    "title": "Caribisch gebied",
+    "description": "Regions, countries, tectonics and economy of the Caribbean"
   },
   "map": {
-    "label": "caribbean",
+    "label": "Caribisch gebied",
     "center": [
       -71,
       15
