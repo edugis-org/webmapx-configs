@@ -4497,7 +4497,9 @@
             "source": "source",
             "source-layer": "public.provincies_2023_geo",
             "paint": {
-              "text-color": "black"
+              "text-color": "black",
+              "text-halo-color": "#fff",
+              "text-halo-width": 1.2
             },
             "layout": {
               "text-field": [
